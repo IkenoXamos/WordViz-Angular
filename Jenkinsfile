@@ -33,4 +33,7 @@ npm install'''
       }
     }
   }
+  environment {
+    HOME = '.'
+  }
 }
