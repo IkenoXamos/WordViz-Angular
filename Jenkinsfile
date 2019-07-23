@@ -33,6 +33,6 @@ pipeline {
     }
   }
   environment {
-    HOME = 'WordViz/'
+    HOME = './WordViz/'
   }
 }
