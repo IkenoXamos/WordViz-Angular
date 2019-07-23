@@ -20,12 +20,15 @@ npm run build'''
     }
     stage('Deployment') {
       steps {
-        s3Delete(path: '**/*', bucket: 'arn:aws:s3:::project1-angular-build')
-        s3Upload(bucket: 'arn:aws:s3:::project1-angular-build', includePathPattern: '**/*', workingDir: 'build')
+        withAWS(region:'us-east-2',credentials:ACCESS_ID) {
+          s3Delete(path: '**/*', bucket: 'arn:aws:s3:::project1-angular-build')
+          s3Upload(bucket: 'arn:aws:s3:::project1-angular-build', includePathPattern: '**/*', workingDir: 'build')
+        }
       }
     }
   }
   environment {
     HOME = '.'
+    ACCESS_ID = "${env.JENKINS_ACCESS_ID}"
   }
 }
