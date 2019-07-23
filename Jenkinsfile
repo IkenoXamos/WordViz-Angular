@@ -15,7 +15,8 @@ pipeline {
       parallel {
         stage('Test and Build') {
           steps {
-            sh 'npm run build'
+            sh '''cd WordViz
+npm run build'''
           }
         }
         stage('Run Tests') {
