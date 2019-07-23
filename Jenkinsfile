@@ -8,19 +8,22 @@ pipeline {
   stages {
     stage('Install Packages') {
       steps {
-        sh 'npm install'
+        sh '''cd WordViz
+npm install'''
       }
     }
     stage('Test and Build') {
       parallel {
         stage('Test and Build') {
           steps {
-            sh 'npm run build'
+            sh '''cd WordViz
+npm run build'''
           }
         }
         stage('Run Tests') {
           steps {
-            sh 'npm run test'
+            sh '''cd WordViz
+npm run test'''
           }
         }
       }
@@ -33,6 +36,6 @@ pipeline {
     }
   }
   environment {
-    HOME = './WordViz/'
+    HOME = '.'
   }
 }
