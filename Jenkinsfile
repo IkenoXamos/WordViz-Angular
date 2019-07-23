@@ -8,15 +8,15 @@ pipeline {
   stages {
     stage('Install Packages') {
       steps {
-        sh 'npm install'
+        sh '''cd WordViz
+npm install'''
       }
     }
     stage('Test and Build') {
       parallel {
         stage('Test and Build') {
           steps {
-            sh '''cd WordViz
-npm run build'''
+            sh 'npm run build'
           }
         }
         stage('Run Tests') {
