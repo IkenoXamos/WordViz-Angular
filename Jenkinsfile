@@ -13,19 +13,9 @@ npm install'''
       }
     }
     stage('Test and Build') {
-      parallel {
-        stage('Test and Build') {
-          steps {
-            sh '''cd WordViz
+      steps {
+        sh '''cd WordViz
 npm run build'''
-          }
-        }
-        stage('Run Tests') {
-          steps {
-            sh '''cd WordViz
-npm run test'''
-          }
-        }
       }
     }
     stage('Deployment') {
