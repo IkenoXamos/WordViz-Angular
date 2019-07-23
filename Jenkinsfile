@@ -8,8 +8,7 @@ pipeline {
   stages {
     stage('Install Packages') {
       steps {
-        sh '''cd WordViz
-npm install'''
+        sh 'npm install'
       }
     }
     stage('Test and Build') {
@@ -34,6 +33,6 @@ npm install'''
     }
   }
   environment {
-    HOME = '.'
+    HOME = 'WordViz/'
   }
 }
