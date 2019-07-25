@@ -1,5 +1,17 @@
-.li {
-    display: block;
-    float: left;
-    margin: 20px;
+.col {
+    margin: 10px;
+    padding-top: 10px;
+}
+
+#post {
+    background-color: rgb(18, 59, 83);
+}
+
+#FirstStories {
+    background-color: rgb(128, 52, 52);
+    height: 500px;
+}
+
+#SecondBlogs {
+    background-color: rgb(105, 4, 131);
 }

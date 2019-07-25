@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-stories-blogs.component.css']
 })
 export class UserStoriesBLogsComponent implements OnInit {
-
+  number:number= 1;
   constructor() { }
 
   ngOnInit() {

@@ -1,3 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+/*Import bootstrap cosmo theme
+https://bootswatch.com/cosmo/
+*/
 
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import './assets/cosmo.css';
