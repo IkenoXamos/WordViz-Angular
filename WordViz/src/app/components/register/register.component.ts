@@ -10,6 +10,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(private us: UserService) { }
 
+  Username = "";
+  Password = "";
+  DisplayName = "";
+
   ngOnInit() {
   }
   

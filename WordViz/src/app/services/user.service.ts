@@ -27,22 +27,20 @@ export class UserService {
   }
 
   loginRequest(Username:string, hash:number):Observable<any>{
-    let parameters = {"Username":Username,"Password":hash}
+    let parameters = {"username":Username,"password":hash}
     return this.http.post<User>(
-      "http://18.219.50.19:8085/login", parameters, {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+      "http://52.14.42.38:8085/WordViz/login", parameters, {headers: new HttpHeaders({'Content-Type': 'application/json'})}
       );
   }
 
   login(Username:string, hash:number) {
-
-    console.log(Username + " " + hash)
 
     this.loginRequest(Username, hash).subscribe((data:User) => {
       if(data != null) {
         //successful login
         console.log("logged in");
         this.auth.setUser(data);
-        this.router.navigate(["Home"]);
+        this.router.navigateByUrl('/home');
 
       }else{
         //unsuccessful login
@@ -68,7 +66,6 @@ export class UserService {
   }
 
   registerRequest(Username:string, hash:number, DisplayName:string){
-    console.log(Username);
     
     let newUser: User = new User(null,null,null,null);
     newUser.username = Username;
@@ -77,9 +74,8 @@ export class UserService {
 
     let parameters = newUser;
 
-    console.log(parameters);
     return this.http.post<boolean>(
-      "http://18.219.50.19:8085/register", parameters, {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+      "http:///52.14.42.38:8085/WordViz/register", parameters, {headers: new HttpHeaders({'Content-Type': 'application/json'})}
       );
 
   }
