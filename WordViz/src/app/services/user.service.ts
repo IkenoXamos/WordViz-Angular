@@ -14,7 +14,7 @@ export class UserService {
   constructor(
     private http:HttpClient,
     private router: Router,
-    private auth: AuthService) { }
+    private as: AuthService) { }
 
   // TypeScript Equivalent of Java's String.hashcode()
   hashString(str: string): number {
@@ -25,21 +25,15 @@ export class UserService {
     }
     return hash;
   }
-
-  loginRequest(Username:string, hash:number):Observable<any>{
-    let parameters = {"username":Username,"password":hash}
-    return this.http.post<User>(
-      "http://52.14.42.38:8085/WordViz/login", parameters, {headers: new HttpHeaders({'Content-Type': 'application/json'})}
-      );
-  }
-
+  
+  ///-----------------------------------
   login(Username:string, hash:number) {
 
     this.loginRequest(Username, hash).subscribe((data:User) => {
       if(data != null) {
         //successful login
         console.log("logged in");
-        this.auth.setUser(data);
+        this.as.setUser(data);
         this.router.navigateByUrl('/home');
 
       }else{
@@ -50,7 +44,15 @@ export class UserService {
       console.log(error);
       window.alert("Login attempt failed")
     });
-  }//---end of login---
+  }
+
+  loginRequest(Username:string, hash:number):Observable<any>{
+    let parameters = {"username":Username,"password":hash}
+    return this.http.post<User>(
+      "http://52.14.42.38:8085/WordViz/login", parameters, {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+      );
+  }
+  //-------------------end of login---
 
   register(Username:string, hash:number, DisplayName:string){
     this.registerRequest(Username, hash, DisplayName).subscribe((response) => {
@@ -77,6 +79,17 @@ export class UserService {
     return this.http.post<boolean>(
       "http:///52.14.42.38:8085/WordViz/register", parameters, {headers: new HttpHeaders({'Content-Type': 'application/json'})}
       );
+
+  }
+  //--------------------end of register---
+
+  logout(){
+    if(this.as.currentUser != null) {
+      this.http.get("http:///52.14.42.38:8085/WordViz/logout").subscribe();
+      this.as.remove();
+    }
+    //window.alert("You have logged out");
+    this.router.navigateByUrl('/home');
 
   }
 }
