@@ -14,18 +14,16 @@
 
     <h2>Recent Stories</h2>
     <hr>
+    <!--Show the 10 most recently created stories-->
+    <ng-container *ngFor="let chapter of chapters.reverse() | slice:0:9">
     <div class="row">
-        <div class="col-10">
-            <h3>'Title' by Author</h3>
-            <p>Body of story  is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a 
-                type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum 
-                passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <div class="col-11">
+            <h3>'{{chapter.name}}' <small>from {{chapter.story.name}}' by {{chapter.story.author.displayName}}</small></h3>
+            <br>
+            <p>{{ chapter.content | slice:0:500}}</p>
+            <hr>
         </div>
-        <div class="col-2">
-            <br>
-            <br>
+        <div class="col-1">
             <form>
                 <div class="form-group row">
                     <button type="view" class="btn btn-primary">View</button>
@@ -33,12 +31,7 @@
             </form>
         </div>
     </div>
-    <hr>
-    <p>hello</p>
-    <ul>
-            <li *ngFor="let chapter of chapters">
-              {{ chapter.content }}
-            </li>
-    </ul>
+    </ng-container>
+
 </div>
 
