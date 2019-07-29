@@ -11,6 +11,9 @@ import { Chapter } from 'src/app/models/chapter';
 export class HomeComponent implements OnInit {
 
   chapters: Chapter[];
+  searchText: string;
+  search: boolean;
+
   constructor(
     private chapter: ChapterService) { }
 
@@ -25,6 +28,14 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  searchChange(){
+    if(this.searchText != ''){
+      this.search = false;
+    }else{
+      this.search = true;
+    }
+
+  }
 
 
 }
