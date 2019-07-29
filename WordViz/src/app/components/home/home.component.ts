@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ChapterService } from 'src/app/services/chapter.service'
+import { Chapter } from 'src/app/models/chapter';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  chapters: Chapter[];
+  constructor(
+    private chapter: ChapterService) { }
 
   ngOnInit() {
+    //get all chapters
+    this.chapter.getAll().subscribe(
+      data =>{
+        //sort by chapterId
+        this.chapters = data.sort(function(a, b) {return b.chapterId - a.chapterId })
+        console.log(this.chapters);
+      }
+    )
   }
+
+
 
 }

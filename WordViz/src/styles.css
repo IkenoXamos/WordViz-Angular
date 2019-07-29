@@ -2,5 +2,7 @@
 https://bootswatch.com/cosmo/
 */
 
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+/* @import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; */
+
 @import './assets/cosmo.css';

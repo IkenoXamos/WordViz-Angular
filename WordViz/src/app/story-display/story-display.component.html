@@ -1,4 +1,4 @@
-<p>story-display works!</p>
+<!-- <p>story-display works!</p>
 <div class="card mb-3" id="textH">
     <div class=" card-header text-center"><u><h4><b>Chapter Title</b></h4></u></div>
     <div class="card-body " id="body">
@@ -9,4 +9,25 @@
         </ckeditor>
     </div>
 </div>
-<button (click)=getDatas()>Data</button>
+<button (click)=getDatas()>Data</button> -->
+
+<head>
+    <title>CKEditor Classic Editing Sample</title>
+    <!-- Make sure the path to CKEditor is correct. -->
+    <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+    <form method="post">
+        <p>
+            My Editor:<br>
+            <textarea name="editor1" id="editor1">&lt;p&gt;Initial editor content.&lt;/p&gt;</textarea>
+            <script>
+                CKEDITOR.replace('editor1');
+            </script>
+        </p>
+        <p>
+            <input type="submit">
+        </p>
+    </form>
+</body>
