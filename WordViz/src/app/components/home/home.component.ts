@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   chapters: Chapter[];
   searchText: string;
-  search: boolean;
+  recent: boolean;
 
   constructor(
     private chapter: ChapterService) { }
@@ -26,15 +26,6 @@ export class HomeComponent implements OnInit {
         console.log(this.chapters);
       }
     )
-  }
-
-  searchChange(){
-    if(this.searchText != ''){
-      this.search = false;
-    }else{
-      this.search = true;
-    }
-
   }
 
 
