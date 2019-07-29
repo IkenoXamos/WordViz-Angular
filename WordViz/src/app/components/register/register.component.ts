@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
   constructor(private us: UserService) { }
 
   Username = "";
-  Passwords= "";
+  Password= "";
   DisplayName = "";
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(Username,Password,DisplayName) {
     //hash the password and username here
     
-    let hash = this.us.hashString(Password);
+    let hash = this.us.hashString(Username, Password);
 
     this.us.register(Username, hash, DisplayName);
   }

@@ -16,13 +16,20 @@ export class UserService {
     private router: Router,
     private as: AuthService) { }
 
-  // TypeScript Equivalent of Java's String.hashcode()
-  hashString(str: string): number {
+  hashString(Username: string, Password: string): number {
+    //hash username and password together
     let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash += Math.pow(str.charCodeAt(i) * 31, str.length - i);
+    for (let i = 0; i < Username.length; i++) {
+      hash += Math.pow(Username.charCodeAt(i) * 31, Username.length - i);
       hash = hash & hash; // Convert to 32bit integer
     }
+    
+    let hash2 = 0
+    for (let i = 0; i < Password.length; i++) {
+      hash2 += Math.pow(Password.charCodeAt(i) * 31, Password.length - i);
+      hash2 = hash2 & hash2; // Convert to 32bit integer
+    }
+    hash += hash2;
     return hash;
   }
   

@@ -4,7 +4,7 @@
     <br>
     <form>
         <div class="form-group row">
-            <div class="col-10">
+            <div class="col-11">
                 <input type="text" class="form-control" id="Search" placeholder="Search">
             </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -15,18 +15,20 @@
     <h2>Recent Stories</h2>
     <hr>
     <!--Show the 10 most recently created stories-->
-    <ng-container *ngFor="let chapter of chapters.reverse() | slice:0:9">
+    <ng-container *ngFor="let chapter of chapters | slice:0:9">
     <div class="row">
         <div class="col-11">
-            <h3>'{{chapter.name}}' <small>from {{chapter.story.name}}' by {{chapter.story.author.displayName}}</small></h3>
-            <br>
-            <p>{{ chapter.content | slice:0:500}}</p>
+            <h3>'{{chapter.name}}' <small>from '{{chapter.story.name}}' by {{chapter.story.author.displayName}}</small></h3>
+            <h4>Uploaded: {{chapter.timestamp | date: 'yyyy-MM-dd HH:mm'}}</h4>
+            <p>
+                {{ chapter.content | HtmlPipe |slice:0:500}}
+            </p>
             <hr>
         </div>
         <div class="col-1">
             <form>
                 <div class="form-group row">
-                    <button type="view" class="btn btn-primary">View</button>
+                    <button type="view" style="width:70px" class="btn btn-primary">View  </button>
                 </div>
             </form>
         </div>
