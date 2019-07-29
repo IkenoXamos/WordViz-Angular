@@ -1,0 +1,28 @@
+.col {
+    margin: 10px;
+    padding-top: 10px;
+}
+
+#post {
+    background-color: rgb(33, 110, 155);
+}
+
+#FirstStories {
+    background-color: rgb(128, 52, 52);
+    /* background-color: rgb(172, 163, 163); */
+    height: 500px;
+}
+
+#SecondBlogs {
+    background-color: rgb(105, 4, 131);
+}
+
+#btnE {
+    background-color: rgb(156, 156, 156);
+    color: white;
+}
+
+#btnC {
+    background-color: rgb(44, 172, 150);
+    color: white;
+}

@@ -1,0 +1,10 @@
+<p>blog-display works!</p>
+
+<div class="card mb-3" id="textH">
+    <div class=" card-header text-center"><u><h4><b>Blog Title</b></h4></u></div>
+    <div class="card-body " id="body">
+        <h4 class="card-title ">Section title</h4>
+        <textarea *ngIf="isLoggedIn" class="col" id="editor" [readOnly]="disableText" rows="17">Some quick example text to build on the card title and make up the bulk of the card's content.</textarea>
+        <ckeditor *ngIf="!isLoggedIn" [editor]="Editor" [(ngModel)]="model.editorData"></ckeditor>
+    </div>
+</div>

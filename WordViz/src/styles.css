@@ -1,5 +1,8 @@
 /*Import bootstrap cosmo theme
 https://bootswatch.com/cosmo/
 */
-@import './assets/cosmo.css';
 
+
+/* @import '../node_modules/bootstrap/dist/css/bootstrap.min.css'; */
+
+@import './assets/cosmo.css';
