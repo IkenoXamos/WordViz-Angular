@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserStoriesBLogsComponent implements OnInit {
   number:number= 1;
+  active:boolean = true;
   constructor() { }
 
   ngOnInit() {

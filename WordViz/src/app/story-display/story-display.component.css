@@ -7,3 +7,16 @@
 #body {
     border-color: rgb(128, 52, 52);
 }
+
+#textA {
+    border-color: rgb(128, 52, 52);
+    height: 90%;
+}
+
+textarea {
+    resize: none;
+}
+
+#textAS {
+    resize: none;
+}

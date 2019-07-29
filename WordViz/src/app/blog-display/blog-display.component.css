@@ -7,3 +7,12 @@
 #body {
     border-color: rgb(105, 4, 131);
 }
+
+#editor {
+    border-color: rgb(105, 4, 131);
+    /* height: 90%; */
+}
+
+textarea {
+    resize: none;
+}
