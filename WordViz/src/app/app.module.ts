@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HtmlPipe } from './pipes/HtmlPipe';
 
 //run 'npm install --save ngx-webstorage' in the terminal to install the NgxStorageModule
 
@@ -20,7 +21,8 @@ import { RegisterComponent } from './components/register/register.component';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { RegisterComponent } from './components/register/register.component';
     NgxWebstorageModule.forRoot(),
     HttpClientModule
   ],
-  providers: [],
+  providers: [ HtmlPipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

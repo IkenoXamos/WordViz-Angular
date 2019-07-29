@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(Username,Password) {
+  onSubmit(Username,Password) { 
     //hash the password and username here
         
-    let hash = this.us.hashString(Password);
+    let hash = this.us.hashString(Username, Password);
 
     this.us.login(Username, hash);
   }

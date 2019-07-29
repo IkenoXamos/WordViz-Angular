@@ -1,8 +1,8 @@
 export class Tag {
     constructor(
-        public chapterId: number,
         public tagId: number,
-        public name: string
+        public name: string,
+        public type: number
     ){}
     
     }
