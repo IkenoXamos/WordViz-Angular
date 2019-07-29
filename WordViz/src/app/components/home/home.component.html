@@ -2,29 +2,36 @@
     <br>
     <h1>Welcome to WordViz</h1>
     <br>
-    <form>
         <div class="form-group row">
-            <div class="col-11">
-                <input type="text" class="form-control" id="Search" placeholder="Search">
+            <div class="col-12">
+                <input type="text" class="form-control" name="Search" 
+                id="Search" placeholder="Search by Author, Chapter or Story Title" (onKeyDown)=searchChange() [(ngModel)]="searchText">
             </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-    </form>
 
 
-    <h2>Recent Stories</h2>
+    <h2 *ngIf="search; else results">Recent Stories</h2>
+    <ng-template #results>
+        <h2>Search Results</h2>
+    </ng-template>
     <hr>
     <!--Show the 10 most recently created stories-->
-    <ng-container *ngFor="let chapter of chapters | slice:0:9">
+    <ng-container *ngFor="let chapter of chapters |  searchFilter: searchText | slice:0:9">
     <div class="row">
         <div class="col-11">
-            <h3>'{{chapter.name}}' <small>from '{{chapter.story.name}}' by {{chapter.story.author.displayName}}</small></h3>
-            <h4>Uploaded: {{chapter.timestamp | date: 'yyyy-MM-dd HH:mm'}}</h4>
+            <div class="row">
+                <div class= "col-lg-8">
+                <h3>'{{chapter.name}}' <small>from '{{chapter.story.name}}' by {{chapter.story.author.displayName}}</small></h3>
+                </div>
+                <div class = "col-lg-4" style = "text-align: right">
+                    <h3><small><small>Uploaded: {{chapter.timestamp | date: 'yyyy-MM-dd HH:mm'}}</small></small></h3>
+                </div>
+            </div>
             <p>
                 {{ chapter.content | HtmlPipe |slice:0:500}}
             </p>
             <hr>
-        </div>
+            </div>
         <div class="col-1">
             <form>
                 <div class="form-group row">
@@ -34,6 +41,8 @@
         </div>
     </div>
     </ng-container>
+    <br>
+    <br>
 
 </div>
 

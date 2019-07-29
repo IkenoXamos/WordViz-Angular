@@ -16,6 +16,7 @@ import { HtmlPipe } from './pipes/HtmlPipe';
 import { StoryDisplayComponent } from './story-display/story-display.component';
 import { UserStoriesBLogsComponent } from './user-stories-blogs/user-stories-blogs.component';
 import { BlogDisplayComponent } from './blog-display/blog-display.component';
+import { SearchPipe } from './pipes/SearchPipe';
 
 //run 'npm install --save ngx-webstorage' in the terminal to install the NgxStorageModule
 
@@ -33,7 +34,8 @@ import { BlogDisplayComponent } from './blog-display/blog-display.component';
     HtmlPipe,
     StoryDisplayComponent,
     UserStoriesBLogsComponent,
-    BlogDisplayComponent
+    BlogDisplayComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,10 @@ import { BlogDisplayComponent } from './blog-display/blog-display.component';
     CKEditorModule,
     
   ],
-  providers: [ HtmlPipe ],
+  providers: [ 
+    HtmlPipe,
+    SearchPipe 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
