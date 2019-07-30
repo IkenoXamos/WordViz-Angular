@@ -10,7 +10,7 @@
         <ul class="navbar-nav ml-auto">
             <li>
                 <a *ngIf='loggedIn' href="userStoriesBlogs">{{currentUser.displayName}}</a>
-                <!-- <a *ngIf= -->
+
             </li>
             <li>
                 <div class="dropdown">
@@ -22,7 +22,7 @@
                         <a *ngIf='loggedIn == false' href="login">Login</a>
                         <a *ngIf='loggedIn == false' href="register">Register</a>
                         <!--Logged in options-->
-                        <a *ngIf='loggedIn' href="newStory">New Story</a>
+                        <a *ngIf='loggedIn' href="createStoryTitle">New Story</a>
                         <a *ngIf='loggedIn' href="newBlog">New Blog</a>
                         <a *ngIf='loggedIn' (click)=logout()>Logout</a>
                     </div>

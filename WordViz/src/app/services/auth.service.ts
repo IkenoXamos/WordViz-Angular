@@ -22,6 +22,10 @@ export class AuthService {
     return this.ss.observe("currentUser");
   }
 
+  getUser(): User{
+    return this.currentUser;
+  }
+
   remove(): void {
     this.currentUser = null;
   }
