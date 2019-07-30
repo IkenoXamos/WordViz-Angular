@@ -4,6 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserStoriesBLogsComponent } from './user-stories-blogs/user-stories-blogs.component';
+import { StoryDisplayComponent } from './story-display/story-display.component';
+import { NewStoryComponent } from './components/new-story/new-story.component';
 
 
 const routes: Routes = [
@@ -20,7 +22,14 @@ const routes: Routes = [
     path:'register',
     component: RegisterComponent
   },
-
+  {
+    path:'newStory',
+    component: StoryDisplayComponent
+  },
+  {
+    path:'createStoryTitle',
+    component: NewStoryComponent
+  },
   {
     path:'userStoriesBlogs',
     component: UserStoriesBLogsComponent

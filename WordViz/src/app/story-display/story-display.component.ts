@@ -17,6 +17,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 export class StoryDisplayComponent implements OnInit {
 
     //npm install --save @ckeditor/ckeditor5-upload
+    storyTitle:string = '';
     disableText = true;
   public isDisabled = true;
   public isLoggedIn = false;
@@ -30,6 +31,7 @@ public Editor = ClassicEditor;
   ngOnInit() {
   }
 
+  //need to add this to an actual service this is basically dummy data
   saveChp():Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type':'application/json'})
@@ -87,6 +89,7 @@ public Editor = ClassicEditor;
   }
 
   onReady(eventData) {
+    //still need to work on image upload
     eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
       console.log(btoa(loader.file));
       return new UploadAdapter(loader);

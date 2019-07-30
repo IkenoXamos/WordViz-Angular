@@ -13,27 +13,14 @@
         <div class="card-header ">Story Title goes here.</div>
         <div class="card-body">
             <h4 class="card-title ">List of Stories</h4>
+
             <div class="list-group">
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
+
+                <div class="row" *ngFor="let story of stories | slice:0:9">
+                    <a *ngIf="isStory(story)" class="list-group-item list-group-item-action text-dark col-10"><u>{{story.name}}</u></a>
+                    <button type="button" *ngIf="active" class="col-2 btn rounded" (click)=setCurrStory(story) id="btnE">EDIT</button>
                 </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
+
 
 
             </div>
@@ -57,7 +44,7 @@
 
                 <div class="col-2">
 
-                    <button type="button" *ngIf="active" class="btn rounded" id="btnC">CREATE</button>
+                    <button type="button" *ngIf="active" class="btn rounded" id="btnC" (click)="routeCreateStory()">CREATE</button>
                 </div>
             </div>
 
@@ -71,26 +58,11 @@
         <div class="card-body ">
             <h4 class="card-title ">Info card title</h4>
             <div class="list-group">
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
+                <div class="row" *ngFor="let story of stories | slice:0:9">
+                    <a *ngIf="!isStory(story)" class="list-group-item list-group-item-action text-dark col-10"><u>{{story.name}}</u></a>
+                    <button type="button" *ngIf="!isStory(story)" class="col-2 btn rounded" id="btnE">EDIT</button>
                 </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
-                <div class="row">
-                    <a class="list-group-item list-group-item-action text-dark col-10"><u>something</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" id="btnE">EDIT</button>
-                </div>
+
 
             </div>
             <div class="row">

@@ -17,6 +17,8 @@ import { StoryDisplayComponent } from './story-display/story-display.component';
 import { UserStoriesBLogsComponent } from './user-stories-blogs/user-stories-blogs.component';
 import { BlogDisplayComponent } from './blog-display/blog-display.component';
 import { SearchPipe } from './pipes/SearchPipe';
+import { NewStoryComponent } from './components/new-story/new-story.component';
+import { NewStoryChaptersComponent } from './components/new-story-chapters/new-story-chapters.component';
 
 //run 'npm install --save ngx-webstorage' in the terminal to install the NgxStorageModule
 
@@ -35,7 +37,9 @@ import { SearchPipe } from './pipes/SearchPipe';
     StoryDisplayComponent,
     UserStoriesBLogsComponent,
     BlogDisplayComponent,
-    SearchPipe
+    SearchPipe,
+    NewStoryComponent,
+    NewStoryChaptersComponent
   ],
   imports: [
     BrowserModule,
