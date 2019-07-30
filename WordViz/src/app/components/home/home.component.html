@@ -5,16 +5,14 @@
         <div class="form-group row">
             <div class="col-12">
                 <input type="text" class="form-control" name="Search" 
-                id="Search" placeholder="Search by Author, Chapter or Story Title" (onKeyDown)=searchChange() [(ngModel)]="searchText">
+                id="Search" placeholder="Search by Author, Chapter or Story Title" [(ngModel)]="searchText">
             </div>
         </div>
 
 
-    <h2 *ngIf="search; else results">Recent Stories</h2>
-    <ng-template #results>
-        <h2>Search Results</h2>
-    </ng-template>
+    <h2>Stories</h2>
     <hr>
+    <br>
     <!--Show the 10 most recently created stories-->
     <ng-container *ngFor="let chapter of chapters |  searchFilter: searchText | slice:0:9">
     <div class="row">
