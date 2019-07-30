@@ -18,7 +18,7 @@ export class UserStoriesBLogsComponent implements OnInit {
   currentUser: User;
 
   @SessionStorage()
-  story: Story;
+  currStory: Story;
 
   constructor(private storyService: StoryService,private router: Router) { }
 
@@ -56,7 +56,8 @@ export class UserStoriesBLogsComponent implements OnInit {
   }
 
   setCurrStory(story:Story){
-    
+    this.storyService.setCurrStory(story);
+    //continue here
   }
 
 }

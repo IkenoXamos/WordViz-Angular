@@ -17,7 +17,7 @@ import { SessionStorage } from 'ngx-webstorage';
 export class StoryService {
 
   @SessionStorage()
-  story:Story;
+  currStory:Story;
   constructor(private http:HttpClient,private auth:AuthService) { }
 
   getAll():Observable<Story[]>{
@@ -49,6 +49,6 @@ export class StoryService {
   }
 
   setCurrStory(story: Story){
-    
+    this.currStory = story;
   }
 }
