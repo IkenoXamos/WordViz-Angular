@@ -14,4 +14,8 @@ export class NewChapterTitleComponent implements OnInit {
   ngOnInit() {
   }
 
+  createChapter(){
+    
+  }
+
 }
