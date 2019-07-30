@@ -1,0 +1,10 @@
+#FirstStories {
+    background-color: rgb(128, 52, 52);
+    /* background-color: rgb(172, 163, 163); */
+    height: 500px;
+}
+
+#btnC {
+    background-color: rgb(44, 172, 150);
+    color: white;
+}

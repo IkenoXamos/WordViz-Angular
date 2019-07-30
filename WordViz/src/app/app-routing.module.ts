@@ -6,6 +6,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserStoriesBLogsComponent } from './user-stories-blogs/user-stories-blogs.component';
 import { StoryDisplayComponent } from './story-display/story-display.component';
 import { NewStoryComponent } from './components/new-story/new-story.component';
+import { NewStoryChaptersComponent } from './components/new-story-chapters/new-story-chapters.component';
+import { NewChapterTitleComponent } from './components/new-chapter-title/new-chapter-title.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,18 @@ const routes: Routes = [
   {
     path:'createStoryTitle',
     component: NewStoryComponent
+  },
+  {
+    path: 'viewStoryChapters',
+    component: NewStoryChaptersComponent
+  },
+  {
+    path: 'newChapterTitle',
+    component: NewChapterTitleComponent
+  },
+  {
+    path:'editChapter',
+    component: StoryDisplayComponent
   },
   {
     path:'userStoriesBlogs',
