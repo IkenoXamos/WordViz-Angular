@@ -19,6 +19,7 @@ import { BlogDisplayComponent } from './blog-display/blog-display.component';
 import { SearchPipe } from './pipes/SearchPipe';
 import { NewStoryComponent } from './components/new-story/new-story.component';
 import { NewStoryChaptersComponent } from './components/new-story-chapters/new-story-chapters.component';
+import { NewChapterTitleComponent } from './components/new-chapter-title/new-chapter-title.component';
 
 //run 'npm install --save ngx-webstorage' in the terminal to install the NgxStorageModule
 
@@ -39,7 +40,8 @@ import { NewStoryChaptersComponent } from './components/new-story-chapters/new-s
     BlogDisplayComponent,
     SearchPipe,
     NewStoryComponent,
-    NewStoryChaptersComponent
+    NewStoryChaptersComponent,
+    NewChapterTitleComponent
   ],
   imports: [
     BrowserModule,

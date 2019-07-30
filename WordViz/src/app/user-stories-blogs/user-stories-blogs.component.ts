@@ -4,6 +4,7 @@ import { SessionStorage, SessionStorageService } from 'ngx-webstorage';
 import {User} from '../models/user';
 import {Story} from '../models/story';
 import { Router } from '@angular/router';
+import { Chapter } from '../models/chapter';
 
 @Component({
   selector: 'app-user-stories-blogs',
@@ -14,8 +15,12 @@ export class UserStoriesBLogsComponent implements OnInit {
   number:number= 1;
   active:boolean = true;
   stories:Story[];
+  // chapters: Chapter[];
   @SessionStorage()
   currentUser: User;
+
+  @SessionStorage()
+  chapters: Chapter[];
 
   @SessionStorage()
   currStory: Story;
@@ -56,7 +61,20 @@ export class UserStoriesBLogsComponent implements OnInit {
   }
 
   setCurrStory(story:Story){
+    //set the current user story clicked on and go to edit chapters
     this.storyService.setCurrStory(story);
+    this.storyService.getStoryChapters(story).subscribe(
+      data => {
+        if(data!=null){
+          this.chapters = data;
+          this.router.navigateByUrl('/viewStoryChapters');
+          console.log(this.chapters);
+        }
+        else{
+          console.log("couldn't get the chapters");
+        }
+      }
+    );
     //continue here
   }
 
