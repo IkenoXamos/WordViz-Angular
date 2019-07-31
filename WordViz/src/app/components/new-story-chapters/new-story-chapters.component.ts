@@ -25,17 +25,16 @@ export class NewStoryChaptersComponent implements OnInit {
       return true;
 
       //////////////con here
-    }
-    else{
+    } else{
       return false;
     }
   }
 
   createChapter(){
-    this.router.navigateByUrl('/newChapterTitle');
+    this.router.navigate(['/newChapterTitle', {story: this.storyService.currStory}]);
   }
 
   editChapter(){
-    this.router.navigateByUrl('/editChapter');
+    this.router.navigate(['/editChapter', {story: this.storyService.currStory}]);
   }
 }
