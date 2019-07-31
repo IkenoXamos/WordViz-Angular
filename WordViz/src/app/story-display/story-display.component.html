@@ -2,7 +2,7 @@
 <div class="card mb-3 rounded" id="textH">
     <div class=" card-header text-center">
         <label><b>Enter a title:&nbsp;&nbsp;</b></label>
-        <input type="text" [(ngModel)]="storyTitle">
+        <input type="text" [(ngModel)]="chapter.name">
     </div>
     <div class="card-body rounded" id="body">
 
@@ -12,4 +12,4 @@
         </ckeditor>
     </div>
 </div>
-<button (click)=getDatas()>Data</button>
+<button (click)=getDatas()>Submit</button>

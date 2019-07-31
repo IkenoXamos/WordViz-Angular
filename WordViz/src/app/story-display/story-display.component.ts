@@ -19,8 +19,7 @@ export class StoryDisplayComponent implements OnInit {
     disableText = true;
     isDisabled = true;
     isLoggedIn = false;
-    model = { editorData: '',
-              extraPlugins: { extraPlugins: [ Base64UploadAdapter ] }
+    model = { extraPlugins: { extraPlugins: [ Base64UploadAdapter ] }
             };
     Editor = ClassicEditor;
     chapter: Chapter;
@@ -51,7 +50,7 @@ export class StoryDisplayComponent implements OnInit {
   }
 
   getDatas():void{
-    console.log(this.model.editorData);
+    console.log(this.chapter.content);
     this.saveChp().subscribe(
       data => {console.log(data)}
     );
