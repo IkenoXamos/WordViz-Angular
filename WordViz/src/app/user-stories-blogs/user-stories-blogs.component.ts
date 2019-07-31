@@ -5,6 +5,7 @@ import {User} from '../models/user';
 import {Story} from '../models/story';
 import { Router } from '@angular/router';
 import { Chapter } from '../models/chapter';
+import { identifierModuleUrl } from '@angular/compiler';
 
 
 @Component({
@@ -17,10 +18,17 @@ export class UserStoriesBLogsComponent implements OnInit {
   active:boolean = true;
   stories:Story[];
   numberOfPages:number;
-  numbersArray:number[];//holds number of pages for pagination
-  low:number = 0;
-  high:number = 9;
-  isDisabled:boolean = true; 
+  // numbersArray:number[];//holds number of pages for pagination
+  lowStories:number = 0;
+  highStories:number = 10;
+  lowBlogs:number = 0;
+  highBlogs:number = 10;
+  numberOfStories = 0;
+  numberOfBlogs = 0;
+  isDisabledPrev:boolean = true; 
+  isDisabledNext:boolean = false; 
+  isDisabledPrev2:boolean = true; 
+  isDisabledNext2:boolean = false; 
   // chapters: Chapter[];
   @SessionStorage()
   currentUser: User;
@@ -48,10 +56,13 @@ export class UserStoriesBLogsComponent implements OnInit {
       data =>{
         if(data != null){
           this.stories = data;
-          this.numberOfPages = Math.ceil(this.stories.length/10);
-          this.numbersArray = new Array(this.numberOfPages);
-          for(let i = 0;i<this.numberOfPages;i++){
-            this.numbersArray[i] = i+1;
+          for(let i = 0;i < this.stories.length;i++){
+            if(this.stories[i].type == 1){
+              this.numberOfStories++;
+            }
+            else{
+              this.numberOfBlogs++;
+            }
           }
           console.log(data);
         }
@@ -89,5 +100,69 @@ export class UserStoriesBLogsComponent implements OnInit {
     //continue here
   }
 
+
+  previous(){
+    //go to previous page in stories
+    if(this.lowStories == 0){
+      this.isDisabledPrev = true;
+    }
+    else{
+      this.lowStories = this.lowStories - 10;
+      this.highStories = this.highStories - 10;
+      this.isDisabledPrev = false;
+      this.isDisabledNext = false;
+      if(this.lowStories <= 0){
+        this.lowStories = 0;
+        this.highStories = 10;
+        this.isDisabledPrev = true;
+      }
+    }
+  }
+
+  next(){
+    //go to next page in stories
+    
+    
+      this.lowStories = this.lowStories + 10;
+      this.highStories = this.highStories + 10;
+      this.isDisabledNext = false;
+      this.isDisabledPrev = false;
+
+      if(this.highStories + 10 > this.numberOfStories){
+        this.isDisabledNext = true;
+        this.isDisabledPrev = false;
+      }
+    
+  }
+
+  previous2(){
+    if(this.lowBlogs == 0){
+      this.isDisabledPrev = true;
+    }
+    else{
+      this.lowBlogs = this.lowBlogs - 10;
+      this.highBlogs = this.highBlogs - 10;
+      this.isDisabledPrev = false;
+      if(this.lowBlogs <= 0){
+        this.lowBlogs = 0;
+        this.highBlogs = 9;
+        this.isDisabledPrev2 = true;
+      }
+    }
+  }
+
+  next2(){
+    if(this.highBlogs + 10 > this.stories.length){
+      this.isDisabledPrev2 = true;
+    }
+    else{
+      this.lowBlogs = this.lowBlogs + 10;
+      this.highBlogs = this.highBlogs + 10;
+      this.isDisabledNext2 = false;
+      if(this.highBlogs + 10 > this.stories.length){
+        this.isDisabledPrev2 = true;
+      }
+    }
+  }
   
 }
