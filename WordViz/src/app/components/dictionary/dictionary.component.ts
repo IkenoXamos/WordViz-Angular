@@ -30,7 +30,7 @@ export class DictionaryComponent implements OnInit {
         data => {
           this.define = data;
           this.length = this.define.results.length;
-          this.mod = length%5;
+          this.mod = this.length%5;
       });
   }
 
