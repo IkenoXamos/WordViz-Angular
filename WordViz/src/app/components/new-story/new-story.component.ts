@@ -5,7 +5,6 @@ import { StoryService } from 'src/app/services/story.service';
 import { Router } from '@angular/router';
 import { TagService } from 'src/app/services/tag.service';
 import { Tag } from 'src/app/models/tag';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-new-story',
@@ -17,7 +16,7 @@ export class NewStoryComponent implements OnInit {
   story:Story;
 
   alltags:Tag[];
-  tags2:Tag[];
+  tags2:Tag[] = [];
   length:number;
 
   options:[{tag:Tag, checked:boolean}] = [];
@@ -42,7 +41,9 @@ export class NewStoryComponent implements OnInit {
 
   createStory(){
 
-    this.story = new Story(null, this.auth.currentUser,this.storyTitle,null,1,0);
+    this.tags();
+
+    this.story = new Story(null, this.auth.currentUser,this.storyTitle,this.tags2,1,0);
     this.storyService.createStory(this.story).subscribe(
       data =>{
         if(data!=null){
@@ -55,7 +56,11 @@ export class NewStoryComponent implements OnInit {
   }
 
   tags(){
-    this.tags2.push()  
+    for (let option of this.options){
+      if (option.checked){
+        this.tags2.push(option.tag);
+      }
+    }
     console.log(this.tags2)
   }
 
