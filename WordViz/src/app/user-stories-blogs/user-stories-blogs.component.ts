@@ -16,8 +16,11 @@ export class UserStoriesBLogsComponent implements OnInit {
   number:number= 1;
   active:boolean = true;
   stories:Story[];
+  numberOfPages:number;
+  numbersArray:number[];//holds number of pages for pagination
   low:number = 0;
   high:number = 9;
+  isDisabled:boolean = true; 
   // chapters: Chapter[];
   @SessionStorage()
   currentUser: User;
@@ -45,6 +48,11 @@ export class UserStoriesBLogsComponent implements OnInit {
       data =>{
         if(data != null){
           this.stories = data;
+          this.numberOfPages = Math.ceil(this.stories.length/10);
+          this.numbersArray = new Array(this.numberOfPages);
+          for(let i = 0;i<this.numberOfPages;i++){
+            this.numbersArray[i] = i+1;
+          }
           console.log(data);
         }
         else{
@@ -81,4 +89,5 @@ export class UserStoriesBLogsComponent implements OnInit {
     //continue here
   }
 
+  
 }
