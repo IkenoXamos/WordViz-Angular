@@ -21,6 +21,8 @@ import { SpacePipe } from './pipes/SpacePipe'
 import { NewStoryComponent } from './components/new-story/new-story.component';
 import { NewStoryChaptersComponent } from './components/new-story-chapters/new-story-chapters.component';
 import { DictionaryComponent } from './components/dictionary/dictionary.component';
+import { NewChapterTitleComponent } from './components/new-chapter-title/new-chapter-title.component';
+
 
 //run 'npm install --save ngx-webstorage' in the terminal to install the NgxStorageModule
 
@@ -43,7 +45,8 @@ import { DictionaryComponent } from './components/dictionary/dictionary.componen
     SpacePipe,
     NewStoryComponent,
     NewStoryChaptersComponent,
-    DictionaryComponent
+    DictionaryComponent,
+    NewChapterTitleComponent
   ],
   imports: [
     BrowserModule,

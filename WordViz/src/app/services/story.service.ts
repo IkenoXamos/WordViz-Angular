@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { AuthService } from './auth.service';
 import { SessionStorage } from 'ngx-webstorage';
+import { Chapter } from '../models/chapter';
 
 
 
@@ -18,6 +19,10 @@ export class StoryService {
 
   @SessionStorage()
   currStory:Story;
+
+  @SessionStorage()
+  chapters: Chapter[];
+
   constructor(private http:HttpClient,private auth:AuthService) { }
 
   getAll():Observable<Story[]>{
@@ -51,4 +56,16 @@ export class StoryService {
   setCurrStory(story: Story){
     this.currStory = story;
   }
+
+  getStoryChapters(story:Story):Observable<Chapter[]>{
+    return this.http.post<Chapter[]>(
+      "http://52.14.42.38:8085/WordViz/story/chapters",
+      story
+    );
+  }
+
+  createChapter(){
+    
+  }
+
 }
