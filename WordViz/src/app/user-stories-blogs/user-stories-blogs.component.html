@@ -52,7 +52,7 @@
     <div class="card text-white mb-3 col shadow-lg p-4 mb-4" id="SecondBlogs">
         <div class="card-header ">Choose a Blog to Edit:</div>
         <div class="card-body ">
-            <h4 class="card-title ">My Bogs</h4>
+            <h4 class="card-title ">My Blogs</h4>
             <div class="list-group">
                 <div class="row" *ngFor="let story of stories | slice:0:9">
                     <a *ngIf="!isStory(story)" class="list-group-item list-group-item-action text-dark col-10"><u>{{story.name}}</u></a>
