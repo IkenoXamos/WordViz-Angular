@@ -61,6 +61,8 @@ export class HomeComponent implements OnInit {
     this.chapters2 = this.SearchPipe.transform(this.chapters,this.searchText);
     this.length = this.chapters2.length;
     this.mod = this.length%10;
+
+    console.log(this.max,this.length,this.mod)
   }
 
 
