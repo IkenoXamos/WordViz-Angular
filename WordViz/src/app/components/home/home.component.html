@@ -4,15 +4,15 @@
     <br>
         <div class="form-group row">
             <div class="col-12">
-                <input type="text" class="form-control" name="Search" 
-                id="Search" placeholder="Search by Author, Chapter or Story Title" (keydown)=reset() [(ngModel)]="searchText">
+                <input type="text" class="form-control" name="Search" id="Search" 
+                placeholder="Search by Author, Chapter or Story Title" (keydown)=reset() [(ngModel)]="searchText">
             </div>
         </div>
 
 
     <h2>Stories</h2>
     <hr>
-    <ng-container *ngFor="let chapter of chapters |  searchFilter: searchText | slice:min:max let i=index">
+    <ng-container *ngFor="let chapter of chapters | searchFilter: searchText | slice:min:max let i=index">
     <div class="row">
         <div class="col-11">
             <div class="row">
