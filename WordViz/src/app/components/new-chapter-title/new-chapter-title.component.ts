@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ChapterService } from 'src/app/services/chapter.service';
-import { Chapter } from 'src/app/models/chapter';
 import { ActivatedRoute } from '@angular/router';
 import { Story } from 'src/app/models/story';
+import { Chapter } from 'src/app/models/chapter';
+import { StoryService } from 'src/app/services/story.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-chapter-title',
@@ -11,12 +13,11 @@ import { Story } from 'src/app/models/story';
 })
 export class NewChapterTitleComponent implements OnInit {
 
-
-
   chapterTitle:string = '';
   story: Story;
 
-  constructor(private cs: ChapterService, private route: ActivatedRoute) { }
+  constructor(private cs: ChapterService, private route: ActivatedRoute, private router:Router, private ss: StoryService) { }
+  newChapter:Chapter;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -26,7 +27,15 @@ export class NewChapterTitleComponent implements OnInit {
   }
 
   createChapter(){
-    this.cs.createChapter(new Chapter(null, null, this.chapterTitle, "", null));
+    this.newChapter = new Chapter(null,this.ss.currStory,this.chapterTitle,null,null);
+    this.cs.createChapter(this.newChapter).subscribe(
+      data => {
+        if(data!=null){
+          this.router.navigateByUrl('/viewStoryChapters');
+        }
+      }
+    );
+
   }
 
 }

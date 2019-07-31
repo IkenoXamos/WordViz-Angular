@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { StoryService } from 'src/app/services/story.service';
 import { Router } from '@angular/router';
 import { Story } from 'src/app/models/story';
+import { Chapter } from 'src/app/models/chapter';
 
 @Component({
   selector: 'app-new-story-chapters',
@@ -12,11 +13,23 @@ import { Story } from 'src/app/models/story';
 export class NewStoryChaptersComponent implements OnInit {
 
   story:Story;
+  chapters:Chapter[];
   constructor(private auth: AuthService,private storyService: StoryService,
     private router:Router) { }
 
   ngOnInit() {
     this.userCurrAuth();
+    this.storyService.getStoryChapters(this.story).subscribe(
+      data =>{
+        if(data!=null){
+          this.chapters = data;
+          console.log(data);
+        }
+        else{
+          console.log(data);
+        }
+      }
+    );
   }
 
   userCurrAuth(){

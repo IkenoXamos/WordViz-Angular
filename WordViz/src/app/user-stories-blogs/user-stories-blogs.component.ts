@@ -6,6 +6,7 @@ import {Story} from '../models/story';
 import { Router } from '@angular/router';
 import { Chapter } from '../models/chapter';
 
+
 @Component({
   selector: 'app-user-stories-blogs',
   templateUrl: './user-stories-blogs.component.html',
@@ -15,6 +16,8 @@ export class UserStoriesBLogsComponent implements OnInit {
   number:number= 1;
   active:boolean = true;
   stories:Story[];
+  low:number = 0;
+  high:number = 9;
   // chapters: Chapter[];
   @SessionStorage()
   currentUser: User;

@@ -63,9 +63,4 @@ export class StoryService {
       story
     );
   }
-
-  createChapter(){
-    
-  }
-
 }
