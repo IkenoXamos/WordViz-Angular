@@ -22,12 +22,13 @@
                             <strong>Example:</strong> {{result.examples| SpacePipe}}.
                     </div>
                 </small>
-                <br>
                 <div class="row">
-                    <button *ngIf="(max >= length && length > 4 && i == mod) || (i == 4 && min != 0)" (click)="lastPage()" 
-                            class="btn btn-primary">&lt; Back</button>
-                    <button *ngIf="i == 4 && max < length " (click)="nextPage()" 
-                            class="btn btn-primary">Next &gt;</button>
+                    <div class="col-12">
+                        <button *ngIf="(max >= length && length > 4 && i == mod) || (i == 4 && min != 0)" (click)="lastPage()" 
+                                class="btn btn-primary">&lt; Back</button>
+                        <button *ngIf="i == 4 && max < length " (click)="nextPage()" 
+                                class="btn btn-primary">Next &gt;</button>
+                    </div>
                 </div>
             </div>
         </div>

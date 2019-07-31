@@ -39,7 +39,6 @@ export class DictionaryComponent implements OnInit {
     this.max = 5;
     this.dex = 1;
     this.dictionaryRequest(word);
-    console.log(this.min,this.max,this.dex)
   }
 
   nextPage(){
