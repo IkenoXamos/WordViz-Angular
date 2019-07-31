@@ -19,7 +19,7 @@ export class NewStoryComponent implements OnInit {
   tags2:Tag[] = [];
   length:number;
 
-  options:[{tag:Tag, checked:boolean}] = [];
+  options:Array<{tag:Tag, checked:boolean}> = [];
 
 
   constructor(private auth: AuthService,private storyService: StoryService,
