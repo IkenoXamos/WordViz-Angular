@@ -8,21 +8,22 @@
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-5 text-left">
-                            <div *ngFor="let tag of tags | slice:0:length+1">
-                                <label><input type="checkbox" class="form-check-input" value={{tag}}>{{tag.name}}</label>
+                            <div *ngFor="let tag of options | slice:0:length+1">
+                                <input type="checkbox" class="form-check-input" name="tag" value={{tag.tag}} [(ngModel)]="tag.checked">
+                                <label>{{tag.tag.name}}</label>
                             </div> 
                         </div>
                         <div class="col-5 text-left">
-                            <div *ngFor="let tag of tags | slice:length+1:(length*2)+1">
-                                    <input type="checkbox" class="form-check-input" value={{tag}}>
-                                <label>{{tag.name}}</label>
+                            <div *ngFor="let tag of options | slice:length+1:(length*2)+1">
+                                <input type="checkbox" class="form-check-input" name="tag" value={{tag.tag}} [(ngModel)]="tag.checked">
+                                <label>{{tag.tag.name}}</label>
                             </div> 
                         </div>
-
                     </div>
                 </form>
         </div>
     <div class="card-body rounded" id="body">
             <button type="button" (click)=createStory() class="btn btn-primary">CREATE</button>
+            <button type="button" (click)=tags() class="btn btn-primary">Tags</button>
     </div>
 </div>

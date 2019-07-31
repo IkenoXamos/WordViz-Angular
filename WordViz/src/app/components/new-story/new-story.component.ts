@@ -5,6 +5,7 @@ import { StoryService } from 'src/app/services/story.service';
 import { Router } from '@angular/router';
 import { TagService } from 'src/app/services/tag.service';
 import { Tag } from 'src/app/models/tag';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-new-story',
@@ -15,23 +16,32 @@ export class NewStoryComponent implements OnInit {
   storyTitle:string= '';
   story:Story;
 
-  tags:Tag[];
+  alltags:Tag[];
+  tags2:Tag[];
   length:number;
 
+  options:[{tag:Tag, checked:boolean}] = [];
+
+
   constructor(private auth: AuthService,private storyService: StoryService,
-    private router:Router, private tagService: TagService) { }
+    private router:Router, private tagService: TagService) {
+     }
 
   ngOnInit() {
     this.tagService.getStoryTags().subscribe(
       data =>{
-        this.tags = data.sort(function(a, b) {return b.tagId - a.tagId });
-        this.length = this.tags.length/2
+        this.alltags = data.sort(function(a, b) {return b.tagId - a.tagId });
+        this.length = this.alltags.length/2
 
-
+        let tag:Tag
+        for ( tag of this.alltags){
+          this.options.push({tag:tag, checked:false})
+        }
       });
   }
 
   createStory(){
+
     this.story = new Story(null, this.auth.currentUser,this.storyTitle,null,1,0);
     this.storyService.createStory(this.story).subscribe(
       data =>{
@@ -42,6 +52,11 @@ export class NewStoryComponent implements OnInit {
           console.log("error creating new story")
         }//add an error handler
       });
+  }
+
+  tags(){
+    this.tags2.push()  
+    console.log(this.tags2)
   }
 
 }
