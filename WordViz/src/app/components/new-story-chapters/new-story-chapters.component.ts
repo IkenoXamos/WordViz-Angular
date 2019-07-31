@@ -4,6 +4,7 @@ import { StoryService } from 'src/app/services/story.service';
 import { Router } from '@angular/router';
 import { Story } from 'src/app/models/story';
 import { Chapter } from 'src/app/models/chapter';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-new-story-chapters',
@@ -15,7 +16,7 @@ export class NewStoryChaptersComponent implements OnInit {
   story:Story;
   chapters:Chapter[];
   constructor(private auth: AuthService,private storyService: StoryService,
-    private router:Router) { }
+    private router:Router, private stateService: StateService) { }
 
   ngOnInit() {
     this.userCurrAuth();
@@ -44,10 +45,12 @@ export class NewStoryChaptersComponent implements OnInit {
   }
 
   createChapter(){
-    this.router.navigate(['/newChapterTitle', { story: JSON.stringify(this.storyService.currStory) }]);
+    this.router.navigate(['/newChapterTitle']);
+    this.stateService.data = this.storyService.currStory;
   }
 
   editChapter(index: number){
-    this.router.navigate(['/editChapter', { chapter: JSON.stringify(this.chapters[index]) }]);
+    this.router.navigate(['/editChapter']);
+    this.stateService.data = this.chapters[index];
   }
 }
