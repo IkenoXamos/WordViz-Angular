@@ -63,12 +63,4 @@ export class StoryService {
       story
     );
   }
-
-  createChapter(chapter:Chapter):Observable<Chapter>{
-    return this.http.post<Chapter>(
-      "http://52.14.42.38:8085/WordViz/chapter/new",
-      chapter
-    );
-  }
-
 }

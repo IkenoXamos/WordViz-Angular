@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import {ClassicEditor} from '@ckeditor/ckeditor5-build-classic';
-// import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/base64uploadadapter';
-import {UploadAdapter} from 'src/app/models/UploadAdapter';
-// import { from } from 'rxjs';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/base64uploadadapter';
+import { UploadAdapter } from 'src/app/models/UploadAdapter';
 import { HttpParams, HttpClient ,HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { ActivatedRoute } from '@angular/router';
+import { Chapter } from '../models/chapter';
 
 
 @Component({
@@ -16,17 +15,21 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 })
 export class StoryDisplayComponent implements OnInit {
 
-    //npm install --save @ckeditor/ckeditor5-upload
     storyTitle:string = '';
     disableText = true;
-  public isDisabled = true;
-  public isLoggedIn = false;
-  public model = {
-    editorData: ''
-};
-public Editor = ClassicEditor;
+    isDisabled = true;
+    isLoggedIn = false;
+    model = { extraPlugins: { extraPlugins: [ Base64UploadAdapter ] }
+            };
+    Editor = ClassicEditor;
+    chapter: Chapter;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.chapter = JSON.parse(params['chapter']);
+      console.log(this.chapter);
+    });
+   }
 
   ngOnInit() {
   }
@@ -36,65 +39,40 @@ public Editor = ClassicEditor;
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type':'application/json'})
     };////////////////////////////////////////////////////////////////////////////
-    return this.http.post<any>("http://52.14.42.38:8085/WordViz/chapter/update", {
-      
-
-
-
-  "chapterId":null,
-
-  "story": {
-
-      "storyId":30,
-
-      "author":{
-
-          "userId":1,
-
-          "username":"username",
-
-          "password":12345,
-
-          "displayName":"displayName"
-
-      },
-
-      "name":"Example Story",
-
-      "tags":[],
-
-      "type":1,
-
-      "vote":0
-
-  },
-
-  "name":"Example Chapter 2",
-
-  "content":this.model.editorData,
-
-  "timestamp":null
-
-
-
-
-    },httpOptions);
+    return this.http.post<any>("http://52.14.42.38:8085/WordViz/chapter/update", 
+  {
+    "chapterId":this.chapter.chapterId,
+    "story": this.chapter.story,
+    "name":this.chapter.name,
+    "content":this.chapter.content,
+    "timestamp":this.chapter.timestamp
+  }, httpOptions);
   }
 
   getDatas():void{
-    console.log(this.model.editorData);
+    console.log(this.chapter.content);
     this.saveChp().subscribe(
       data => {console.log(data)}
     );
   }
 
-  onReady(eventData) {
-    //still need to work on image upload
-    eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+  // onReady(eventData) {
+  //   //still need to work on image upload
+  //   eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+  //     console.log(btoa(loader.file));
+  //     return new UploadAdapter(loader);
+  //   };
+  // }
+
+  public onReady( editor ) {
+    editor.ui.getEditableElement().parentElement.insertBefore(
+        editor.ui.view.toolbar.element,
+        editor.ui.getEditableElement()
+    );
+
+    editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
       console.log(btoa(loader.file));
       return new UploadAdapter(loader);
     };
   }
-
-
 }

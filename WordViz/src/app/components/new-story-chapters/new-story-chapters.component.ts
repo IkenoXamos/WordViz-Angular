@@ -38,17 +38,16 @@ export class NewStoryChaptersComponent implements OnInit {
       return true;
 
       //////////////con here
-    }
-    else{
+    } else{
       return false;
     }
   }
 
   createChapter(){
-    this.router.navigateByUrl('/newChapterTitle');
+    this.router.navigate(['/newChapterTitle', { story: JSON.stringify(this.storyService.currStory) }]);
   }
 
-  editChapter(){
-    this.router.navigateByUrl('/editChapter');
+  editChapter(index: number){
+    this.router.navigate(['/editChapter', { chapter: JSON.stringify(this.chapters[index]) }]);
   }
 }
