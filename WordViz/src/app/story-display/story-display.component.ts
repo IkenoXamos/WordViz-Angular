@@ -7,6 +7,7 @@ import { HttpParams, HttpClient ,HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Chapter } from '../models/chapter';
+import { StateService } from '../services/state.service';
 
 
 @Component({
@@ -25,9 +26,10 @@ export class StoryDisplayComponent implements OnInit {
     Editor = ClassicEditor;
     chapter: Chapter;
 
-  constructor(private http:HttpClient, private route: ActivatedRoute) {
+  constructor(private http:HttpClient, private route: ActivatedRoute, private stateService: StateService) {
     this.route.params.subscribe(params => {
-      this.chapter = JSON.parse(params['chapter']);
+      this.chapter = this.stateService.data;
+      this.stateService.data = undefined;
       console.log(this.chapter);
     });
    }
