@@ -27,6 +27,18 @@
     color: white;
 }
 
-#pgs {
+#prev {
+    color: black;
+}
+
+#next {
+    color: black;
+}
+
+#prev2 {
+    color: black;
+}
+
+#next2 {
     color: black;
 }

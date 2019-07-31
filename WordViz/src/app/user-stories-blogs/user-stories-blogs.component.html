@@ -16,9 +16,9 @@
 
             <div class="list-group">
 
-                <div class="row" *ngFor="let story of stories | slice:low:high">
+                <div class="row" *ngFor="let story of stories | slice:lowStories:highStories let i = index">
                     <a *ngIf="isStory(story)" class="list-group-item list-group-item-action text-dark col-10"><u>{{story.name}}</u></a>
-                    <button type="button" *ngIf="active" class="col-2 btn rounded" (click)=setCurrStory(story) id="btnE">EDIT</button>
+                    <a *ngIf="active" class="col-2 btn rounded" (click)=setCurrStory(story) id="btnE">EDIT</a>
                 </div>
 
 
@@ -27,17 +27,12 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <ul class="pagination pagination-sm col-6">
-                    <li class="page-item">
-                        <a class="page-link" href="#">&laquo;</a>
+                    <li class="page-item" [class.disabled]="isDisabledPrev">
+                        <a class="page-link" (click)="previous()" id="prev">prev</a>
                     </li>
-                    <!-- <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li> -->
-                    <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
+
+                    <li class="page-item" [class.disabled]="isDisabledNext">
+                        <a class="page-link" (click)="next()" id="next">next</a>
                     </li>
 
                 </ul>
@@ -55,9 +50,9 @@
 
 
     <div class="card text-white mb-3 col shadow-lg p-4 mb-4" id="SecondBlogs">
-        <div class="card-header ">Blog title goes here</div>
+        <div class="card-header ">Choose a Blog to Edit:</div>
         <div class="card-body ">
-            <h4 class="card-title ">Info card title</h4>
+            <h4 class="card-title ">My Blogs</h4>
             <div class="list-group">
                 <div class="row" *ngFor="let story of stories | slice:0:9">
                     <a *ngIf="!isStory(story)" class="list-group-item list-group-item-action text-dark col-10"><u>{{story.name}}</u></a>
@@ -69,20 +64,12 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <ul class="pagination pagination-sm col-6">
-                    <li class="page-item" [class.disabled]="isDisabled">
-                        <a class="page-link" href="#">prev</a>
+                    <li class="page-item" [class.disabled]="isDisabledPrev">
+                        <a class="page-link" (click)="previous2()" id="prev2">prev</a>
                     </li>
-                    <!-- <li class="page-item" *ngFor="let number of numbersArray;let i = index" id="pgs">
-                        <a class="page-link">{{number}}</a>
-                    </li> -->
-                    <!-- <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
+
                     <li class="page-item">
-                        <a class="page-link" href="#">2 loop goes here</a>
-                    </li> -->
-                    <li class="page-item">
-                        <a class="page-link" href="#">next</a>
+                        <a class="page-link" (click)="next2()" id="next2">next</a>
                     </li>
                 </ul>
                 <div class="col-2">
