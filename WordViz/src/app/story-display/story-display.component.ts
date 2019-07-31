@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import * as ClassicEditor from 'src/assets/customEditor/ckeditor.js';
 import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/base64uploadadapter';
 import { UploadAdapter } from 'src/app/models/UploadAdapter';
 import { HttpParams, HttpClient ,HttpHeaders} from "@angular/common/http";
@@ -70,9 +71,9 @@ export class StoryDisplayComponent implements OnInit {
         editor.ui.getEditableElement()
     );
 
-    editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      console.log(btoa(loader.file));
-      return new UploadAdapter(loader);
-    };
+    // editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+    //   console.log(btoa(loader.file));
+    //   return new UploadAdapter(loader);
+    // };
   }
 }
