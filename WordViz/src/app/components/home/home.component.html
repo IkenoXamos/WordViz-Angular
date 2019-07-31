@@ -14,7 +14,7 @@
     <hr>
     <br>
     <!--Show the 10 most recently created stories-->
-    <ng-container *ngFor="let chapter of chapters |  searchFilter: searchText | slice:0:9">
+    <ng-container *ngFor="let chapter of chapters |  searchFilter: searchText | slice:min:max; let i=index">
     <div class="row">
         <div class="col-11">
             <div class="row">
@@ -33,7 +33,7 @@
         <div class="col-1">
             <form>
                 <div class="form-group row">
-                    <button type="view" style="width:70px" class="btn btn-primary">View  </button>
+                    <button type="view" style="width:70px" class="btn btn-primary">View </button>
                 </div>
             </form>
         </div>
