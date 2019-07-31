@@ -54,7 +54,7 @@ import { NewChapterTitleComponent } from './components/new-chapter-title/new-cha
     FormsModule,
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
-    CKEditorModule,
+    CKEditorModule
     
   ],
   providers: [ 
