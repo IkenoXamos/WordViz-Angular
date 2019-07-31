@@ -14,7 +14,7 @@
     <hr>
     <br>
     <!--Show the 10 most recently created stories-->
-    <ng-container *ngFor="let chapter of chapters |  searchFilter: searchText | slice:min:max; let i=index">
+    <ng-container *ngFor="let chapter of chapters |  searchFilter: searchText | slice:0:9; let i=index">
     <div class="row">
         <div class="col-11">
             <div class="row">
