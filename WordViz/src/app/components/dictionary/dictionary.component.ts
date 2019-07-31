@@ -12,6 +12,7 @@ export class DictionaryComponent implements OnInit {
 
   constructor(private http:HttpClient) { }
 
+  word:string;
   define:dictionary;
   length: number;
   mod:number;
