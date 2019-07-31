@@ -17,9 +17,12 @@ import { StoryDisplayComponent } from './story-display/story-display.component';
 import { UserStoriesBLogsComponent } from './user-stories-blogs/user-stories-blogs.component';
 import { BlogDisplayComponent } from './blog-display/blog-display.component';
 import { SearchPipe } from './pipes/SearchPipe';
+import { SpacePipe } from './pipes/SpacePipe'
 import { NewStoryComponent } from './components/new-story/new-story.component';
 import { NewStoryChaptersComponent } from './components/new-story-chapters/new-story-chapters.component';
+import { DictionaryComponent } from './components/dictionary/dictionary.component';
 import { NewChapterTitleComponent } from './components/new-chapter-title/new-chapter-title.component';
+
 
 //run 'npm install --save ngx-webstorage' in the terminal to install the NgxStorageModule
 
@@ -39,8 +42,10 @@ import { NewChapterTitleComponent } from './components/new-chapter-title/new-cha
     UserStoriesBLogsComponent,
     BlogDisplayComponent,
     SearchPipe,
+    SpacePipe,
     NewStoryComponent,
     NewStoryChaptersComponent,
+    DictionaryComponent,
     NewChapterTitleComponent
   ],
   imports: [
@@ -54,7 +59,8 @@ import { NewChapterTitleComponent } from './components/new-chapter-title/new-cha
   ],
   providers: [ 
     HtmlPipe,
-    SearchPipe 
+    SearchPipe,
+    SpacePipe 
   ],
   bootstrap: [AppComponent]
 })
