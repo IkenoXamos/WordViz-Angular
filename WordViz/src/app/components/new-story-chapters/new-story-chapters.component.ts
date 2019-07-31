@@ -44,10 +44,10 @@ export class NewStoryChaptersComponent implements OnInit {
   }
 
   createChapter(){
-    this.router.navigate(['/newChapterTitle', {story: this.storyService.currStory}]);
+    this.router.navigate(['/newChapterTitle', { story: JSON.stringify(this.storyService.currStory) }]);
   }
 
-  editChapter(){
-    this.router.navigate(['/editChapter', {story: this.storyService.currStory}]);
+  editChapter(index: number){
+    this.router.navigate(['/editChapter', { chapter: JSON.stringify(this.chapters[index]) }]);
   }
 }

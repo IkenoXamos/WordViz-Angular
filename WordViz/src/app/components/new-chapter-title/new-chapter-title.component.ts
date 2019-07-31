@@ -15,15 +15,15 @@ export class NewChapterTitleComponent implements OnInit {
 
   chapterTitle:string = '';
   story: Story;
-
-  constructor(private cs: ChapterService, private route: ActivatedRoute, private router:Router, private ss: StoryService) { }
   newChapter:Chapter;
 
-  ngOnInit() {
+  constructor(private cs: ChapterService, private route: ActivatedRoute, private router:Router, private ss: StoryService) {
     this.route.params.subscribe(params => {
-      this.story = params['story'];
-      console.log(this.story.storyId);
+      this.story = JSON.parse(params['story']);
    });
+   }
+
+  ngOnInit() {
   }
 
   createChapter(){

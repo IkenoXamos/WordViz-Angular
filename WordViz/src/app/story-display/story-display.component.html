@@ -7,30 +7,9 @@
     <div class="card-body rounded" id="body">
 
         <textarea *ngIf="isLoggedIn" id="textAS" class="col" id="editor" (click)="getDatas()" [readOnly]="disableText">Some quick example text to build on the card title and make up the bulk of the card's content.</textarea>
-        <ckeditor *ngIf="!isLoggedIn" [editor]="Editor" [(ngModel)]="model.editorData" (ready)="onReady($event)">
+        <ckeditor *ngIf="!isLoggedIn" [editor]="Editor" [(ngModel)]="chapter.content" (ready)="onReady($event)">
 
         </ckeditor>
     </div>
 </div>
 <button (click)=getDatas()>Data</button>
-
-<!-- <head>
-    <title>CKEditor Classic Editing Sample</title>
-    Make sure the path to CKEditor is correct.
-<script src="/ckeditor/ckeditor.js"></script>
-</head>
-
-<body>
-    <form method="post">
-        <p>
-            My Editor:<br>
-            <textarea name="editor1" id="editor1">&lt;p&gt;Initial editor content.&lt;/p&gt;</textarea>
-            <script>
-                CKEDITOR.replace('editor1');
-            </script>
-        </p>
-        <p>
-            <input type="submit">
-        </p>
-    </form>
-</body> -->

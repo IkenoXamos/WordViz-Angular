@@ -5,9 +5,9 @@
 
         <div class="list-group">
 
-            <div class="row" *ngFor="let chapter of chapters | slice:0:9">
+            <div class="row" *ngFor="let chapter of chapters | slice:0:9; let i = index">
                 <a class="list-group-item list-group-item-action text-dark col-10"><u>{{chapter.name}}</u></a>
-                <button type="button" *ngIf="userCurrAuth()" class="col-2 btn rounded" id="btnE" (click)=editChapter()>EDIT</button>
+                <button type="button" *ngIf="userCurrAuth()" class="col-2 btn rounded" id="btnE" (click)=editChapter(i)>EDIT</button>
             </div>
 
 
