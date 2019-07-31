@@ -5,6 +5,7 @@ import { Story } from 'src/app/models/story';
 import { Chapter } from 'src/app/models/chapter';
 import { StoryService } from 'src/app/services/story.service';
 import { Router } from '@angular/router';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-new-chapter-title',
@@ -17,10 +18,10 @@ export class NewChapterTitleComponent implements OnInit {
   story: Story;
   newChapter:Chapter;
 
-  constructor(private cs: ChapterService, private route: ActivatedRoute, private router:Router, private ss: StoryService) {
-    this.route.params.subscribe(params => {
-      this.story = JSON.parse(params['story']);
-   });
+  constructor(private cs: ChapterService, private route: ActivatedRoute,
+          private router:Router, private ss: StoryService, private stateService: StateService) {
+    this.story = this.stateService.data;
+    this.stateService.data = undefined;
    }
 
   ngOnInit() {
@@ -35,7 +36,5 @@ export class NewChapterTitleComponent implements OnInit {
         }
       }
     );
-
   }
-
 }
