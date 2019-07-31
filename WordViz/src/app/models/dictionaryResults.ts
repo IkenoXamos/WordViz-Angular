@@ -3,7 +3,8 @@ export class dictionaryResults {
         public definiton: string,
         public partOfSpeech: string,
         public examples: string[],
-        pubilc synonyms: string[]
+        
+        public synonyms: string[]
 
     ){}
     
