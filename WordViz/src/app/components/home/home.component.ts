@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
       data =>{
         //sort by chapterId
         this.chapters = data.sort(function(a, b) {return b.chapterId - a.chapterId })
-        console.log(this.chapters);
       }
     )
   }

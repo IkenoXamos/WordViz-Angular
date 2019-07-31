@@ -6,6 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class HtmlPipe implements PipeTransform {
     transform(value: string): any {
-        return value.replace(/<.*?>/g, '');
+        if(value != null){
+            return value.toString().replace(/<.*?>/g, '');
+        }
+        else return value;
     }
 }
