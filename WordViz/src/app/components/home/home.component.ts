@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ChapterService } from 'src/app/services/chapter.service'
 import { Chapter } from 'src/app/models/chapter';
 import { SearchPipe } from 'src/app/pipes/SearchPipe';
+import { Router } from '@angular/router';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-home',
@@ -23,8 +25,10 @@ export class HomeComponent implements OnInit {
   dex:number;
 
   constructor(
-    private chapter: ChapterService,
-    private SearchPipe:SearchPipe) { }
+    private cs: ChapterService,
+    private SearchPipe:SearchPipe,
+    private router: Router,
+    private ss: StateService) { }
 
   ngOnInit() {
     this.max = 10
@@ -32,7 +36,7 @@ export class HomeComponent implements OnInit {
     this.dex = 1
 
     //get all chapters
-    this.chapter.getAll().subscribe(
+    this.cs.getAll().subscribe(
       data =>{
         //sort by chapterId
         this.chapters = data.sort(function(a, b) {return b.chapterId - a.chapterId })
@@ -63,5 +67,8 @@ export class HomeComponent implements OnInit {
     this.mod = this.length%10;
   }
 
-
+  display(chapter: Chapter) {
+    this.ss.data = chapter;
+    this.router.navigate(['editChapter']);
+  }
 }
