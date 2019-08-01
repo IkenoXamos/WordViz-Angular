@@ -93,13 +93,14 @@ export class NewStoryChaptersComponent implements OnInit {
   }
 
   createChapter(){
+    this.stateService.data = this.story;
     this.router.navigate(['/newChapterTitle']);
-    this.stateService.data = this.storyService.currStory;
+
   }
 
   editChapter(index: number){
-    this.router.navigate(['/editChapter']);
     this.stateService.data = this.chapters[index];
+    this.router.navigate(['/editChapter']);
   }
 
   editStory(){
