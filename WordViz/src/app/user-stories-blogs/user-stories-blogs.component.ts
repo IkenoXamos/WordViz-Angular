@@ -71,6 +71,12 @@ export class UserStoriesBLogsComponent implements OnInit {
             }
           }
           this.seperateStoriesBlogs();
+          if(this.numberOfStories <= 10){
+            this.isDisabledNext = true;
+          }
+          if(this.numberOfBlogs <= 10){
+            this.isDisabledNext2 = true;
+          }
           console.log(data);
         }
         else{
@@ -134,7 +140,7 @@ export class UserStoriesBLogsComponent implements OnInit {
 
   previous(){
     //go to previous page in stories
-    if(this.lowStories == 0){
+    if(this.lowStories <= 0){
       this.isDisabledPrev = true;
     }
     else{
@@ -167,33 +173,34 @@ export class UserStoriesBLogsComponent implements OnInit {
   }
 
   previous2(){
-    if(this.lowBlogs == 0){
-      this.isDisabledPrev = true;
+    if(this.lowBlogs <= 0){
+      this.isDisabledPrev2 = true;
     }
     else{
       this.lowBlogs = this.lowBlogs - 10;
       this.highBlogs = this.highBlogs - 10;
-      this.isDisabledPrev = false;
+      this.isDisabledPrev2 = false;
+      this.isDisabledNext2 = false;
       if(this.lowBlogs <= 0){
         this.lowBlogs = 0;
-        this.highBlogs = 9;
+        this.highBlogs = 10;
         this.isDisabledPrev2 = true;
+        this.isDisabledNext2 = false;
       }
     }
   }
 
   next2(){
-    if(this.highBlogs + 10 > this.stories.length){
-      this.isDisabledPrev2 = true;
-    }
-    else{
+    
       this.lowBlogs = this.lowBlogs + 10;
       this.highBlogs = this.highBlogs + 10;
       this.isDisabledNext2 = false;
-      if(this.highBlogs + 10 > this.stories.length){
-        this.isDisabledPrev2 = true;
+      this.isDisabledPrev2 = false;
+      if(this.highBlogs + 10 > this.numberOfBlogs){
+        this.isDisabledNext2 = true;
+        this.isDisabledPrev2 = false;
       }
-    }
+    
   }
   
 }
