@@ -16,6 +16,7 @@ import { TagService } from 'src/app/services/tag.service';
 export class NewStoryChaptersComponent implements OnInit {
 
   story:Story;
+  story2:Story;
   storyTitle:string;
   chapters:Chapter[];
   
@@ -97,8 +98,8 @@ export class NewStoryChaptersComponent implements OnInit {
     
     this.tags();
 
-    this.story = new Story(this.story.storyId,this.story.author,this.storyTitle,this.tags2,this.story.type,this.story.vote);
-    this.storyService.editStory(this.story).subscribe(
+    this.story2 = new Story(this.story.storyId,this.story.author,this.storyTitle,this.tags2,this.story.type,this.story.vote);
+    this.storyService.updateStory(this.story2).subscribe(
       data =>{
         if(data!=null){
           this.router.navigateByUrl('/viewStoryChapters');
