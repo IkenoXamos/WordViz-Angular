@@ -27,7 +27,6 @@ export class SearchPipe implements PipeTransform {
               val = c[key].author.displayName;
               val2 = c[key].name;
               this.tags = c[key].tags;
-              console.log(c[key])
             }
             if(key == 'name'){
                 val3= c[key];     

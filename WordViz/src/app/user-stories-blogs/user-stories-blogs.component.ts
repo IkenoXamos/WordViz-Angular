@@ -61,7 +61,7 @@ export class UserStoriesBLogsComponent implements OnInit {
     this.storyService.getStoriesByAuthor(this.currentUser).subscribe(
       data =>{
         if(data != null){
-          this.allStories = data;
+          this.allStories = data.sort(function(a, b) {return b.storyId - a.storyId });
           for(let i = 0;i < this.allStories.length;i++){
             if(this.allStories[i].type == 1){
               this.numberOfStories++;
