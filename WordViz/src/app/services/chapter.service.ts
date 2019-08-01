@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Chapter } from '../models/chapter'
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,5 +18,14 @@ export class ChapterService {
 
   createChapter(chapter: Chapter): Observable<Chapter> {
     return this.http.post<Chapter>("http://52.14.42.38:8085/WordViz/chapter/new", chapter);
+  }
+
+  updateChapter(chapter: Chapter): Observable<Chapter> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type':'application/json'})
+    };
+    return this.http.post<any>("http://52.14.42.38:8085/WordViz/chapter/update", 
+      chapter, httpOptions
+    );
   }
 }

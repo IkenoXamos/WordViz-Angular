@@ -20,3 +20,7 @@ textarea {
 #textAS {
     resize: none;
 }
+
+.ck-editor__editable {
+    max-height: 400px;
+}
