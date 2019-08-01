@@ -115,8 +115,13 @@ export class UserStoriesBLogsComponent implements OnInit {
       data => {
         if(data!=null){
           this.chapters = data;
+          if(this.currStory.type == 2){
           this.router.navigateByUrl('/viewBlogPosts');
           console.log(this.chapters);
+          }
+          else{
+            this.router.navigateByUrl('viewStoryChapters');
+          }
         }
         else{
           console.log("couldn't get the chapters");
