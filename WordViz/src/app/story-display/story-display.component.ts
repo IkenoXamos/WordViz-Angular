@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as CustomEditor from 'src/assets/customEditor/ckeditor.js';
-import * as DisabledEditor from 'src/assets/customEditorReadOnly/ckeditor.js'
+import * as CKEDITOR from 'src/assets/customEditor/ckeditor.js';
 import { Chapter } from '../models/chapter';
 import { StateService } from '../services/state.service';
 import { AuthService } from '../services/auth.service';
@@ -15,8 +14,8 @@ import { ChapterService } from '../services/chapter.service';
 export class StoryDisplayComponent implements OnInit {
 
     isLoggedIn: boolean = false;
-    Editor = CustomEditor;
-    EditorDisabled = DisabledEditor;
+    Editor = CKEDITOR.CustomEditor;
+    EditorDisabled = CKEDITOR.DisplayEditor;
     chapter: Chapter;
 
   constructor(private cs: ChapterService, private stateService: StateService, private auth: AuthService) {
