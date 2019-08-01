@@ -1,13 +1,13 @@
 <nav class="row" id="navbarColor01">
     <div class="col text-center font-weight-bold text-white rounded" id="post">
-        <h1>My Posts</h1>
+        <h1><strong>My Posts</strong></h1>
     </div>
 </nav>
 
 
 <div class="row">
     <div class="card text-white  mb-3 col shadow-lg p-4 mb-4 rounded" id="FirstStories">
-        <h1 class="card-header">Select story to edit.</h1>
+        <h1 class="card-header">Select story to edit</h1>
         <div class="card-body">
             <div class="list-group">
                 <div class="row" *ngFor="let story of stories | slice:lowStories:highStories let i = index">
@@ -39,7 +39,7 @@
 
 
     <div class="card text-white mb-3 col shadow-lg p-4 mb-4 rounded" id="SecondBlogs">
-        <h1 class="card-header ">Choose blog to Edit:</h1>
+        <h1 class="card-header ">Select blog to edit</h1>
         <div class="card-body ">
             <div class="list-group">
                 <div class="row" *ngFor="let blog of blogs | slice:lowBlogs:highBlogs">
