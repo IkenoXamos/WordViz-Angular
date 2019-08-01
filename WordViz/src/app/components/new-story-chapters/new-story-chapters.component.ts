@@ -87,6 +87,8 @@ export class NewStoryChaptersComponent implements OnInit {
 
     if(this.auth.currentUser.userId != this.story.author.userId){
       this.router.navigate(['home'])
+    }else{
+      return true;
     }
   }
 

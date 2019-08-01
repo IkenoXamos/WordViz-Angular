@@ -35,10 +35,11 @@ export class ListBlogPostsComponent implements OnInit {
   constructor(private auth: AuthService,private storyService: StoryService,
     private router:Router, private tagService: TagService, private ss: StateService) { 
       
-    this.userCurrAuth();
+
 
     this.story = this.ss.data;
     this.ss.data = undefined;
+    this.userCurrAuth();
 
     this.storyService.getStoryChapters(this.story).subscribe(
       data =>{
@@ -84,6 +85,8 @@ export class ListBlogPostsComponent implements OnInit {
   userCurrAuth(){
     if(this.auth.currentUser.userId != this.story.author.userId){
       this.router.navigate(['home']);
+    }else{
+      return true;
     }
   }
 

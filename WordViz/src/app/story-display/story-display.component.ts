@@ -32,5 +32,6 @@ export class StoryDisplayComponent implements OnInit {
     this.cs.createChapter(this.chapter).subscribe(
       data => {console.log(data)}
     );
+    window.alert("Chapter Saved")
   }
 }

@@ -113,7 +113,7 @@ export class UserStoriesBLogsComponent implements OnInit {
 
   setCurrStory(story:Story){
     //set the current user story clicked on and go to edit chapters for either stories or blogs
-    this.storyService.setCurrStory(story);
+    
     this.storyService.getStoryChapters(story).subscribe(
       data => {
         if(data!=null) {
@@ -121,8 +121,7 @@ export class UserStoriesBLogsComponent implements OnInit {
           this.ss.data = story;
 
           if(story.type == 2){
-            this.router.navigate(['/viewBlogPosts']);
-            console.log(this.chapters);
+            this.router.navigate(['viewBlogPosts']);
 
           } else{
             this.router.navigate(['viewStoryChapters']);
