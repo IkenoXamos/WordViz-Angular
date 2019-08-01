@@ -7,7 +7,8 @@
         <div class="card-body rounded" id="body">
             <ckeditor [editor]="Editor" [(ngModel)]="chapter.content"></ckeditor>
             <br>
-            <button style="width:7%" class="btn btn-primary" (click)=onSubmit()>Save</button>
+            <button style="width:7%" class="btn btn-primary" (click)=onSave()>Save</button>
+            <button style="width:15%" class="btn btn-primary" (click)="onClick()">Switch View</button>
         </div>
     </div>
     <br>
@@ -20,6 +21,8 @@
         </div>
         <div class="card-body rounded" id="body">
             <ckeditor [editor]="EditorDisabled" [(ngModel)]="chapter.content" disabled></ckeditor>
+            <br>
+            <button *ngIf="view" style="width:15%" class="btn btn-primary" (click)="onClick()">Switch View</button>
         </div>
     </div>
 </ng-template>

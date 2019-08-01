@@ -14,6 +14,7 @@ import { ChapterService } from '../services/chapter.service';
 export class StoryDisplayComponent implements OnInit {
 
     isLoggedIn: boolean = false;
+    view: boolean = false;
     Editor = CKEDITOR.CustomEditor;
     EditorDisabled = CKEDITOR.DisplayEditor;
     chapter: Chapter;
@@ -22,15 +23,22 @@ export class StoryDisplayComponent implements OnInit {
     this.chapter = this.stateService.data;
     this.stateService.data = undefined;
     this.isLoggedIn = (JSON.stringify(this.auth.currentUser) == JSON.stringify(this.chapter.story.author));
+    this.view= this.isLoggedIn;
    }
 
   ngOnInit() {
   }
 
-  onSubmit(): void{
+  onSave(): void{
     this.cs.createChapter(this.chapter).subscribe(
       data => {console.log(data)}
     );
     window.alert("Chapter Saved")
   }
+
+  onClick(): void{
+    this.isLoggedIn=!this.isLoggedIn;
+  }
+
+
 }

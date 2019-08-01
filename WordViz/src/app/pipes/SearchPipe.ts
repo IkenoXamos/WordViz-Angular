@@ -49,41 +49,27 @@ export class SearchPipe implements PipeTransform {
                 if(tag.name.toLowerCase().includes(arg.toLowerCase())){
                   include = true;
                   break;
-                }else{
-                  include = false;
                 }
               }
               
               //searh by author name
               if(val.toLowerCase().includes(arg.toLowerCase())) {
                   include = true;
-                  break;
-              }else{
-                include = false;
               }
               //search by story name         
               if(val2.toLowerCase().includes(arg.toLowerCase())) {
                   include = true;
-                  break;
-              }else{
-                include = false;
               }
               //search by chapter name
               if(val3.toLowerCase().includes(arg.toLowerCase())) {
                   include = true;
-                  break;
-              }else{
-                include = false;
               }
 
               //search by type
               if(val4.includes(arg.toLowerCase())) {
                 include = true;
-                break;
-              }else{
-              include = false;
               }
-        }
+            }
     return include;
     });
   }
