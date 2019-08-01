@@ -95,15 +95,15 @@ export class NewStoryChaptersComponent implements OnInit {
   }
 
   editStory(){
-    
     this.tags();
-
-    this.story2 = new Story(this.story.storyId,this.story.author,this.story.name,this.tags2,this.story.type,this.story.vote);
-    this.storyService.updateStory(this.story2).subscribe(
+    this.story.tags = this.tags2;
+    this.storyService.setCurrStory(this.story);
+    this.storyService.updateStory(this.story).subscribe(
       data =>{
         if(data!=null){
-          console.log(data);
-          this.router.navigateByUrl('/viewStoryChapters');
+          // this.router.navigateByUrl('/viewStoryChapters');
+          // window.location.reload();
+          window.alert("Story Saved");
         }
         else{
           console.log("error creating new story")
