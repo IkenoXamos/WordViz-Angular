@@ -6,9 +6,7 @@
 // The editor creator to use.
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/base64uploadadapter';
-
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
@@ -29,10 +27,10 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 
-export default class ClassicEditor extends ClassicEditorBase {}
+class CustomEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+CustomEditor.builtinPlugins = [
     Essentials,
     Autoformat,
     Bold,
@@ -57,7 +55,7 @@ ClassicEditor.builtinPlugins = [
 ];
 
 // Editor configuration.
-ClassicEditor.defaultConfig = {
+CustomEditor.defaultConfig = {
     toolbar: {
         items: [
             'heading',
@@ -93,3 +91,49 @@ ClassicEditor.defaultConfig = {
     // This value must be kept in sync with the language defined in webpack.config.js.
     language: 'en'
 };
+
+class DisplayEditor extends ClassicEditorBase {}
+
+// Plugins to include in the build.
+DisplayEditor.builtinPlugins = [
+    Essentials,
+    Autoformat,
+    Bold,
+    Italic,
+    BlockQuote,
+    CKFinder,
+    EasyImage,
+    Heading,
+    Image,
+    ImageCaption,
+    ImageStyle,
+    ImageToolbar,
+    ImageUpload,
+    Link,
+    List,
+    MediaEmbed,
+    Paragraph,
+    PasteFromOffice,
+    Table,
+    TableToolbar,
+    Base64UploadAdapter
+];
+
+DisplayEditor.isReadOnly = true;
+
+// Editor configuration.
+DisplayEditor.defaultConfig = {
+    toolbar: {
+        items: []
+    },
+    image: {
+        toolbar: []
+    },
+    table: {
+        contentToolbar: []
+    },
+    // This value must be kept in sync with the language defined in webpack.config.js.
+    language: 'en'
+};
+
+export default { CustomEditor, DisplayEditor };

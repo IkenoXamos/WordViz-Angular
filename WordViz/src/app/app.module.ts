@@ -15,7 +15,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { HtmlPipe } from './pipes/HtmlPipe';
 import { StoryDisplayComponent } from './story-display/story-display.component';
 import { UserStoriesBLogsComponent } from './user-stories-blogs/user-stories-blogs.component';
-import { BlogDisplayComponent } from './blog-display/blog-display.component';
 import { SearchPipe } from './pipes/SearchPipe';
 import { SpacePipe } from './pipes/SpacePipe'
 import { NewStoryComponent } from './components/new-story/new-story.component';
@@ -42,7 +41,6 @@ import { ListBlogPostsComponent } from './components/list-blog-posts/list-blog-p
     HtmlPipe,
     StoryDisplayComponent,
     UserStoriesBLogsComponent,
-    BlogDisplayComponent,
     SearchPipe,
     SpacePipe,
     NewStoryComponent,
@@ -59,7 +57,6 @@ import { ListBlogPostsComponent } from './components/list-blog-posts/list-blog-p
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
     CKEditorModule
-    
   ],
   providers: [ 
     HtmlPipe,
