@@ -4,7 +4,8 @@
     <br>
     <div class="form-group row">
         <div class="col-12">
-            <input type="text" class="form-control" name="Search" id="Search" placeholder="Search by Author, Tag, Chapter or Story Title" (keyup)=reset() [(ngModel)]="searchText">
+            <input type="text" class="form-control" name="Search" id="Search" 
+            placeholder="Search by Author, Type, Tag, Chapter or Story Title" (keyup)=reset() [(ngModel)]="searchText">
         </div>
     </div>
 
@@ -32,10 +33,13 @@
                 </div>
                 <div class="col-12">
                     <div class="row">
-                        <strong *ngIf="chapter.story.tags.length > 0">Tags:  &nbsp;   </strong>
+                        <strong *ngIf="chapter.story.type-1">Story</strong>
+                        <strong *ngIf="chapter.story.type-2">Blog</strong>
+                        <strong *ngIf="chapter.story.tags.length > 0">&nbsp; - Tags:  &nbsp;</strong>
                         <div *ngFor="let tag of chapter.story.tags">
                             {{tag.name}} &nbsp;
                         </div>
+
 
                     </div>
                 </div>

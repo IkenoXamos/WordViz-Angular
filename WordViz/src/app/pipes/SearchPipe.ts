@@ -20,6 +20,7 @@ export class SearchPipe implements PipeTransform {
             let val: string = '';
             let val2: string = '';
             let val3: string = '';
+            let val4: string = '';
 
 
             
@@ -27,10 +28,18 @@ export class SearchPipe implements PipeTransform {
               val = c[key].author.displayName;
               val2 = c[key].name;
               this.tags = c[key].tags;
+
+              if (c[key].type==1){
+                val4 = 'blog';
+              }else{
+                val4 = 'story';
+              }
+
             }
             if(key == 'name'){
                 val3= c[key];     
             }
+
 
 
             //search by tag
@@ -53,6 +62,11 @@ export class SearchPipe implements PipeTransform {
             if(val3.toLowerCase().includes(args.toLowerCase())) {
                 include = true;
             }
+
+            //search by type
+            if(val4.includes(args.toLowerCase())) {
+              include = true;
+          }
         }
     return include;
     });
