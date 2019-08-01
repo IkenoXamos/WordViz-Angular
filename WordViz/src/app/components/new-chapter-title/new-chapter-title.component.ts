@@ -19,7 +19,7 @@ export class NewChapterTitleComponent implements OnInit {
   newChapter:Chapter;
 
   constructor(private cs: ChapterService, private route: ActivatedRoute,
-          private router:Router, private ss: StoryService, private stateService: StateService) {
+          private router:Router, private stateService: StateService) {
     this.story = this.stateService.data;
     this.stateService.data = undefined;
    }
@@ -28,7 +28,8 @@ export class NewChapterTitleComponent implements OnInit {
   }
 
   createChapter(){
-    this.newChapter = new Chapter(null,this.ss.currStory,this.chapterTitle,null,null);
+    this.newChapter = new Chapter(null,this.story,this.chapterTitle,null,null);
+    console.log(this.newChapter);
     this.cs.createChapter(this.newChapter).subscribe(
       data => {
         if(data!=null){
