@@ -6,6 +6,8 @@ import {Story} from '../models/story';
 import { Router } from '@angular/router';
 import { Chapter } from '../models/chapter';
 import { identifierModuleUrl } from '@angular/compiler';
+import { StateService } from '../services/state.service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -20,28 +22,22 @@ export class UserStoriesBLogsComponent implements OnInit {
   blogs:Story[];
   stories:Story[];
   numberOfPages:number;
-  // numbersArray:number[];//holds number of pages for pagination
+  
   lowStories:number = 0;
   highStories:number = 10;
   lowBlogs:number = 0;
   highBlogs:number = 10;
   numberOfStories = 0;
   numberOfBlogs = 0;
-  isDisabledPrev:boolean = true; 
-  isDisabledNext:boolean = false; 
-  isDisabledPrev2:boolean = true; 
-  isDisabledNext2:boolean = false; 
-  // chapters: Chapter[];
-  @SessionStorage()
-  currentUser: User;
 
-  @SessionStorage()
+  isDisabledPrev:boolean = true;
+  isDisabledNext:boolean = false;
+  isDisabledPrev2:boolean = true;
+  isDisabledNext2:boolean = false;
+
   chapters: Chapter[];
 
-  @SessionStorage()
-  currStory: Story;
-
-  constructor(private storyService: StoryService,private router: Router) { }
+  constructor(private auth: AuthService, private storyService: StoryService,private router: Router, private ss:StateService) { }
 
   ngOnInit() {
     this.getUserStories();
@@ -53,16 +49,17 @@ export class UserStoriesBLogsComponent implements OnInit {
   }
 
   routeCreateBlog(){
-    this.router.navigateByUrl('/createBlogTitle');
+    this.router.navigate(['/createBlogTitle']);
   }
 
   getUserStories(){
     //returns the current user's stories
-    this.storyService.getStoriesByAuthor(this.currentUser).subscribe(
+    this.storyService.getStoriesByAuthor(this.auth.getUser()).subscribe(
       data =>{
-        if(data != null){
+        if(data != null) {
           this.allStories = data.sort(function(a, b) {return b.storyId - a.storyId });
-          for(let i = 0;i < this.allStories.length;i++){
+
+          for(let i = 0;i < this.allStories.length;i++) {
             if(this.allStories[i].type == 1){
               this.numberOfStories++;
             }
@@ -110,20 +107,20 @@ export class UserStoriesBLogsComponent implements OnInit {
 
   setCurrStory(story:Story){
     //set the current user story clicked on and go to edit chapters
-    this.storyService.setCurrStory(story);
     this.storyService.getStoryChapters(story).subscribe(
       data => {
-        if(data!=null){
+        if(data!=null) {
           this.chapters = data;
-          if(this.currStory.type == 2){
-          this.router.navigateByUrl('/viewBlogPosts');
-          console.log(this.chapters);
+          this.ss.data = story;
+
+          if(story.type == 2){
+            this.router.navigate(['/viewBlogPosts']);
+            console.log(this.chapters);
+
+          } else{
+            this.router.navigate(['viewStoryChapters']);
           }
-          else{
-            this.router.navigateByUrl('viewStoryChapters');
-          }
-        }
-        else{
+        } else {
           console.log("couldn't get the chapters");
         }
       }
@@ -195,5 +192,4 @@ export class UserStoriesBLogsComponent implements OnInit {
       }
     }
   }
-  
 }

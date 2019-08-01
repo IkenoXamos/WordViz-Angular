@@ -2,7 +2,7 @@
 <div class="card text-white col shadow-lg rounded" id="FirstStories">
     <h1 class="card-header ">{{story.name}}</h1>
     <div class="card-body">
-        <h4 class="card-title ">List of Chapters</h4>
+        <h4 class="card-title ">List of chapters</h4>
 
         <div class="list-group">
 
@@ -10,8 +10,6 @@
                 <a class="list-group-item list-group-item-action text-dark col-10"><u>{{chapter.name}}</u></a>
                 <button type="button" *ngIf="userCurrAuth()" class="col-2 btn rounded" id="btnE" (click)=editChapter(i)>EDIT</button>
             </div>
-
-
 
         </div>
         <div class="row">

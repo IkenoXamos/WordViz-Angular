@@ -17,19 +17,23 @@ export class ListBlogPostsComponent implements OnInit {
 
   story:Story;
   chapters:Chapter[];
-  story2:Story;
   
   alltags:Tag[];
   tags2:Tag[] = [];
   length:number;
+  edit:boolean = false;
 
   options:Array<{tag:Tag, checked:boolean}> = [];
 
 
   constructor(private auth: AuthService,private storyService: StoryService,
-    private router:Router, private stateService: StateService, private tagService: TagService) { 
+    private router:Router, private tagService: TagService, private ss: StateService) { 
       
     this.userCurrAuth();
+
+    this.story = this.ss.data;
+    this.ss.data = undefined;
+
     this.storyService.getStoryChapters(this.story).subscribe(
       data =>{
         if(data!=null){
@@ -62,7 +66,6 @@ export class ListBlogPostsComponent implements OnInit {
           }else{
            this.options.push({tag:tag, checked:false})
           }
-        
         }
       });
   }
@@ -70,30 +73,24 @@ export class ListBlogPostsComponent implements OnInit {
   ngOnInit() {}
 
   userCurrAuth(){
-    if(this.auth.currentUser.userId == this.storyService.currStory.author.userId){
-      this.story = this.storyService.currStory;
-      return true;
-
-      //////////////con here
-    } else{
-      return false;
+    if(this.auth.currentUser.userId != this.story.author.userId){
+      this.router.navigate(['home']);
     }
   }
 
   createChapter(){
+    this.ss.data = this.story;
     this.router.navigate(['/newChapterTitle']);
-    this.stateService.data = this.storyService.currStory;
   }
 
   editChapter(index: number){
+    this.ss.data = this.chapters[index];
     this.router.navigate(['/editChapter']);
-    this.stateService.data = this.chapters[index];
   }
   
   editBlog(){
     this.tags();
     this.story.tags = this.tags2;
-    this.storyService.setCurrStory(this.story);
     this.storyService.updateStory(this.story).subscribe(
       data =>{
         if(data!=null){
