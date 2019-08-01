@@ -53,6 +53,20 @@ export class StoryService {
     );
   }
 
+  editStory(story: Story):Observable<Story>{
+    return this.http.post<Story>(
+      "http://52.14.42.38:8085/WordViz/story/update",
+      {
+        "storyId":story.storyId,
+        "author":this.auth.getUser(),
+        "name":story.name,
+        "tags":story.tags,
+        "type": story.type,
+        "vote": story.vote
+      }
+    );
+  }
+
   setCurrStory(story: Story){
     this.currStory = story;
   }
