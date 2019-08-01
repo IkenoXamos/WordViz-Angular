@@ -22,6 +22,8 @@ import { NewStoryComponent } from './components/new-story/new-story.component';
 import { NewStoryChaptersComponent } from './components/new-story-chapters/new-story-chapters.component';
 import { DictionaryComponent } from './components/dictionary/dictionary.component';
 import { NewChapterTitleComponent } from './components/new-chapter-title/new-chapter-title.component';
+import { NewBlogComponent } from './components/new-blog/new-blog.component';
+import { ListBlogPostsComponent } from './components/list-blog-posts/list-blog-posts.component';
 
 
 //run 'npm install --save ngx-webstorage' in the terminal to install the NgxStorageModule
@@ -46,7 +48,9 @@ import { NewChapterTitleComponent } from './components/new-chapter-title/new-cha
     NewStoryComponent,
     NewStoryChaptersComponent,
     DictionaryComponent,
-    NewChapterTitleComponent
+    NewChapterTitleComponent,
+    NewBlogComponent,
+    ListBlogPostsComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,8 @@ import { identifierModuleUrl } from '@angular/compiler';
 export class UserStoriesBLogsComponent implements OnInit {
   number:number= 1;
   active:boolean = true;
+  allStories:Story[];
+  blogs:Story[];
   stories:Story[];
   numberOfPages:number;
   // numbersArray:number[];//holds number of pages for pagination
@@ -50,20 +52,25 @@ export class UserStoriesBLogsComponent implements OnInit {
     this.router.navigate(['createStoryTitle']);
   }
 
+  routeCreateBlog(){
+    this.router.navigateByUrl('/createBlogTitle');
+  }
+
   getUserStories(){
     //returns the current user's stories
     this.storyService.getStoriesByAuthor(this.currentUser).subscribe(
       data =>{
         if(data != null){
-          this.stories = data;
-          for(let i = 0;i < this.stories.length;i++){
-            if(this.stories[i].type == 1){
+          this.allStories = data;
+          for(let i = 0;i < this.allStories.length;i++){
+            if(this.allStories[i].type == 1){
               this.numberOfStories++;
             }
             else{
               this.numberOfBlogs++;
             }
           }
+          this.seperateStoriesBlogs();
           console.log(data);
         }
         else{
@@ -71,6 +78,25 @@ export class UserStoriesBLogsComponent implements OnInit {
         }
       }
     );
+  }
+
+  seperateStoriesBlogs(){
+    //seperates the stories and blogs to be able to display them in user-stories-blogs
+    this.stories = new Array(this.numberOfStories);
+    this.blogs = new Array(this.numberOfBlogs);
+    let indexStory = 0;
+    let indexBlogs = 0;
+    for(let i = 0; i<this.allStories.length;i++){
+      if(this.allStories[i].type == 1){
+        this.stories[indexStory] = this.allStories[i];
+        indexStory++;
+      }
+      else{
+        this.blogs[indexBlogs] = this.allStories[i];
+        indexBlogs++;
+      }
+    }
+    console.log(this.blogs);
   }
 
   isStory(story:Story){
@@ -89,7 +115,7 @@ export class UserStoriesBLogsComponent implements OnInit {
       data => {
         if(data!=null){
           this.chapters = data;
-          this.router.navigateByUrl('/viewStoryChapters');
+          this.router.navigateByUrl('/viewBlogPosts');
           console.log(this.chapters);
         }
         else{
