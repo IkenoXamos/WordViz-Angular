@@ -5,6 +5,7 @@ import { StoryService } from 'src/app/services/story.service';
 import { Router } from '@angular/router';
 import { TagService } from 'src/app/services/tag.service';
 import { Tag } from 'src/app/models/tag';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-new-blog',
@@ -22,7 +23,7 @@ export class NewBlogComponent implements OnInit {
   options:Array<{tag:Tag, checked:boolean}> = [];
 
   constructor(private auth: AuthService,private storyService: StoryService,
-    private router:Router, private tagService: TagService) { }
+    private router:Router, private tagService: TagService, private ss: StateService) { }
 
   ngOnInit() {
     this.tagService.getBlogTags().subscribe(
@@ -45,7 +46,8 @@ export class NewBlogComponent implements OnInit {
     this.storyService.createStory(this.story).subscribe(
       data =>{
         if(data!=null){
-          this.router.navigateByUrl('/userStoriesBlogs');
+          this.ss.data=data;
+          this.router.navigate(['viewStoryChapters'])
         }
         else{
           console.log("error creating new story")

@@ -1,24 +1,26 @@
 <br>
 <div *ngIf="isLoggedIn; else viewOnly">
     <div class="card mb-3 rounded" id="textH">
-        <div class=" card-header text-center">
-            <label><strong>Enter a title:&nbsp;&nbsp;</strong></label>
-            <input type="text" [(ngModel)]="chapter.name">
-        </div>
+        <h1 class="card-header text-center">
+            <input type="text" class="text-center" placeholder="Enter a title" [(ngModel)]="chapter.name">
+        </h1>
         <div class="card-body rounded" id="body">
             <ckeditor [editor]="Editor" [(ngModel)]="chapter.content"></ckeditor>
+            <br>
+             <button style="width:7%" class="btn btn-primary" (click)=onSubmit()>Save</button>
         </div>
-        <button (click)=onSubmit()>Submit</button>
     </div>
+    <br>
     <app-dictionary></app-dictionary>
 </div>
 <ng-template #viewOnly>
     <div class="card mb-3 rounded" id="textH">
         <div class=" card-header text-center">
-            <h3>{{chapter.name}}</h3>
+            <h1>{{chapter.name}}</h1>
         </div>
         <div class="card-body rounded" id="body">
             <ckeditor [editor]="EditorDisabled" [(ngModel)]="chapter.content" disabled></ckeditor>
         </div>
     </div>
 </ng-template>
+<br>

@@ -23,7 +23,7 @@
                         <a *ngIf='loggedIn == false' routerLinkActive="active" routerLink="register">Register</a>
                         <!--Logged in options-->
                         <a *ngIf='loggedIn' routerLinkActive="active" routerLink="createStoryTitle">New Story</a>
-                        <a *ngIf='loggedIn' routerLinkActive="active" routerLink="newBlog">New Blog</a>
+                        <a *ngIf='loggedIn' routerLinkActive="active" routerLink="createBlogTitle">New Blog</a>
                         <a *ngIf='loggedIn' (click)=logout()>Logout</a>
                     </div>
                 </div>
