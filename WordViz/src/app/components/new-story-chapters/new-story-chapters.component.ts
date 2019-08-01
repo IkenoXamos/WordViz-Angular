@@ -17,7 +17,6 @@ export class NewStoryChaptersComponent implements OnInit {
 
   story:Story;
   story2:Story;
-  storyTitle:string;
   chapters:Chapter[];
   
   alltags:Tag[];
@@ -37,6 +36,7 @@ export class NewStoryChaptersComponent implements OnInit {
       data =>{
         if(data!=null){
           this.chapters = data;
+          
   
         }
         else{
@@ -98,7 +98,7 @@ export class NewStoryChaptersComponent implements OnInit {
     
     this.tags();
 
-    this.story2 = new Story(this.story.storyId,this.story.author,this.storyTitle,this.tags2,this.story.type,this.story.vote);
+    this.story2 = new Story(this.story.storyId,this.story.author,this.story.name,this.tags2,this.story.type,this.story.vote);
     this.storyService.updateStory(this.story2).subscribe(
       data =>{
         if(data!=null){
