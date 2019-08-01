@@ -1,21 +1,15 @@
-<nav class="row">
-    <!-- <div class="col-4"></div> -->
+<nav class="row" id="navbarColor01">
     <div class="col text-center font-weight-bold text-white rounded" id="post">
-        <h1><b>My Posts</b></h1>
+        <h1>My Posts</h1>
     </div>
-    <!-- <div class="col-4"></div> -->
 </nav>
 
 
 <div class="row">
-
-    <div class="card text-white  mb-3 col shadow-lg p-4 mb-4" id="FirstStories">
-        <div class="card-header ">Select story to edit.</div>
+    <div class="card text-white  mb-3 col shadow-lg p-4 mb-4 rounded" id="FirstStories">
+        <h1 class="card-header">Select story to edit.</h1>
         <div class="card-body">
-            <h4 class="card-title ">My Stories</h4>
-
             <div class="list-group">
-
                 <div class="row" *ngFor="let story of stories | slice:lowStories:highStories let i = index">
                     <a *ngIf="isStory(story)" class="list-group-item list-group-item-action text-dark col-10"><u>{{story.name}}</u></a>
                     <button type="button" *ngIf="active" class="col-2 btn rounded" (click)=setCurrStory(story) id="btnE">EDIT</button>
@@ -40,16 +34,13 @@
                     <button type="button" *ngIf="active" class="btn rounded" id="btnC" (click)="routeCreateStory()">CREATE</button>
                 </div>
             </div>
-
-            <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
     </div>
 
 
-    <div class="card text-white mb-3 col shadow-lg p-4 mb-4" id="SecondBlogs">
-        <div class="card-header ">Choose a Blog to Edit:</div>
+    <div class="card text-white mb-3 col shadow-lg p-4 mb-4 rounded" id="SecondBlogs">
+        <h1 class="card-header ">Choose blog to Edit:</h1>
         <div class="card-body ">
-            <h4 class="card-title ">My Blogs</h4>
             <div class="list-group">
                 <div class="row" *ngFor="let blog of blogs | slice:lowBlogs:highBlogs">
                     <a *ngIf="!isStory(blog)" class="list-group-item list-group-item-action text-dark col-10"><u>{{blog.name}}</u></a>
@@ -68,12 +59,9 @@
                     </li>
                 </ul>
                 <div class="col-2">
-
                     <button type="button" *ngIf="active" class="btn rounded" id="btnC" (click)="routeCreateBlog()">CREATE</button>
                 </div>
             </div>
-            <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
     </div>
-
 </div>

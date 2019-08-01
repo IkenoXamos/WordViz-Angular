@@ -40,7 +40,7 @@ export class NewStoryComponent implements OnInit {
       });
   }
 
-  createStory(){
+  createStory() {
 
     this.tags();
 
@@ -49,7 +49,7 @@ export class NewStoryComponent implements OnInit {
       data =>{
         if(data!=null){
           this.ss.data = data;
-            this.router.navigateByUrl('/userStoriesBlogs');
+          this.router.navigate(['/viewStoryChapters']);
         }
         else{
           console.log("error creating new story")
