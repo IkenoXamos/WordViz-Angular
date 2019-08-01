@@ -1,15 +1,13 @@
 <br>
 <div class="card mb-3 rounded" id="textH">
     <div class=" card-header text-center">
-        <label><b>Enter a title:&nbsp;&nbsp;</b></label>
+        <label><strong>Enter a title:&nbsp;&nbsp;</strong></label>
         <input type="text" [(ngModel)]="chapter.name">
     </div>
     <div class="card-body rounded" id="body">
 
-        <textarea *ngIf="isLoggedIn" id="textAS" class="col" id="editor" (click)="getDatas()" [readOnly]="disableText">Some quick example text to build on the card title and make up the bulk of the card's content.</textarea>
-        <ckeditor *ngIf="!isLoggedIn" [editor]="Editor" [(ngModel)]="chapter.content" (ready)="onReady($event)">
-
-        </ckeditor>
+        <ckeditor *ngIf="isLoggedIn" [editor]="Editor" [(ngModel)]="chapter.content"></ckeditor>
+        <ckeditor *ngIf="!isLoggedIn" [editor]="EditorDisabled" [(ngModel)]="chapter.content" disabled></ckeditor>
     </div>
 </div>
-<button (click)=getDatas()>Submit</button>
+<button (click)=onSubmit()>Submit</button>
