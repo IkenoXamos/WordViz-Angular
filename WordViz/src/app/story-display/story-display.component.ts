@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as CustomEditor from 'src/assets/customEditor/ckeditor.js';
 import * as DisabledEditor from 'src/assets/customEditorReadOnly/ckeditor.js'
-import { ActivatedRoute } from '@angular/router';
 import { Chapter } from '../models/chapter';
 import { StateService } from '../services/state.service';
 import { AuthService } from '../services/auth.service';
