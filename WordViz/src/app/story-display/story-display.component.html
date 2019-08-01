@@ -8,6 +8,8 @@
         <ckeditor [editor]="Editor" [(ngModel)]="chapter.content"></ckeditor>
     </div>
     <button (click)=onSubmit()>Submit</button>
+
+    <app-dictionary></app-dictionary>
 </div>
 <ng-template #viewOnly>
     <div class="card mb-3 rounded" id="textH">
