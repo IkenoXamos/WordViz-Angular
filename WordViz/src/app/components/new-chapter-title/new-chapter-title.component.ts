@@ -32,12 +32,8 @@ export class NewChapterTitleComponent implements OnInit {
     this.cs.createChapter(this.newChapter).subscribe(
       data => {
         if(data!=null){
-          if(this.story.type == 1){
-          this.router.navigateByUrl('/viewStoryChapters');
-          }
-          else{
-            this.router.navigateByUrl('/viewBlogPosts');
-          }
+          this.stateService.data = data;
+          this.router.navigateByUrl('/editChapter');
         }
       }
     );
