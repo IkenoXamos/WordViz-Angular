@@ -53,6 +53,14 @@ export class StoryService {
     );
   }
 
+  updateStory(story: Story):Observable<Story>{
+    return this.http.post<Story>(
+      "http://52.14.42.38:8085/WordViz/story/update",
+      story,
+      {headers: new HttpHeaders({'Content-Type': 'application/json'})}
+    );
+  }
+
   setCurrStory(story: Story){
     this.currStory = story;
   }
