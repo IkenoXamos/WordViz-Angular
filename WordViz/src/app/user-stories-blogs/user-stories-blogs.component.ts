@@ -109,7 +109,7 @@ export class UserStoriesBLogsComponent implements OnInit {
   }
 
   setCurrStory(story:Story){
-    //set the current user story clicked on and go to edit chapters
+    //set the current user story clicked on and go to edit chapters for either stories or blogs
     this.storyService.setCurrStory(story);
     this.storyService.getStoryChapters(story).subscribe(
       data => {

@@ -18,7 +18,7 @@
 
                 <div class="row" *ngFor="let story of stories | slice:lowStories:highStories let i = index">
                     <a *ngIf="isStory(story)" class="list-group-item list-group-item-action text-dark col-10"><u>{{story.name}}</u></a>
-                    <a *ngIf="active" class="col-2 btn rounded" (click)=setCurrStory(story) id="btnE">EDIT</a>
+                    <button type="button" *ngIf="active" class="col-2 btn rounded" (click)=setCurrStory(story) id="btnE">EDIT</button>
                 </div>
             </div>
             <div class="row">
