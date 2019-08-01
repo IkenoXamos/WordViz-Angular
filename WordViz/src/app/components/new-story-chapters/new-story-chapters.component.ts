@@ -102,11 +102,14 @@ export class NewStoryChaptersComponent implements OnInit {
     this.storyService.updateStory(this.story2).subscribe(
       data =>{
         if(data!=null){
+          console.log(data);
           this.router.navigateByUrl('/viewStoryChapters');
         }
         else{
           console.log("error creating new story")
         }//add an error handler
+      },error => {
+        console.log(error);
       });
   }
 

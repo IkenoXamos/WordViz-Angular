@@ -56,14 +56,7 @@ export class StoryService {
   updateStory(story: Story):Observable<Story>{
     return this.http.post<Story>(
       "http://52.14.42.38:8085/WordViz/story/update",
-      {
-        "storyId":story.storyId,
-        "author":story.author,
-        "name":story.name,
-        "tags":story.tags,
-        "type": story.type,
-        "vote": story.vote
-      },
+      story,
       {headers: new HttpHeaders({'Content-Type': 'application/json'})}
     );
   }
