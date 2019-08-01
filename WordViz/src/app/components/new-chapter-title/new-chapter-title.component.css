@@ -1,0 +1,11 @@
+#textH {
+    height: 100%;
+    border-color: rgb(156, 156, 156);
+    background-color: rgb(156, 156, 156);
+    color:white;
+    border-width: 4px
+}
+#btnC {
+    background-color: rgb(44, 172, 150);
+    color: white;
+}

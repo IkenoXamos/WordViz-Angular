@@ -1,38 +1,64 @@
+<br>
 <div class="card text-white  mb-3 col shadow-lg p-4 mb-4 rounded" id="FirstBlogs">
-    <div class="card-header ">{{story.name}}</div>
+    <h1 class="card-header ">{{story.name}}</h1>
     <div class="card-body">
-        <h4 class="card-title ">List of Blogs</h4>
-
+        <h4  *ngIf="chapters.length" class="card-title ">List of posts</h4>
+        <h4 *ngIf="!chapters.length">No posts to display</h4>
         <div class="list-group">
-
             <div class="row" *ngFor="let chapter of chapters | slice:low:high; let i = index">
                 <a class="list-group-item list-group-item-action text-dark col-10"><u>{{chapter.name}}</u></a>
-                <button type="button" *ngIf="userCurrAuth()" class="col-2 btn rounded" id="btnE" (click)=editChapter(i)>EDIT</button>
+                <button type="button" *ngIf="userCurrAuth()" class="col-2 btn rounded" id="btnE" 
+                (click)=editChapter(i)>Edit</button>
             </div>
-
-
-
         </div>
         <div class="row">
             <div class="col-md-2"></div>
             <ul class="pagination pagination-sm col-6">
-                <li class="page-item" [class.disabled]="isDisabledPrev">
+                <li class="page-item" *ngIf="chapters.length" [class.disabled]="isDisabledPrev">
                     <a class="page-link" (click)="previous()" id="prev">prev</a>
                 </li>
-
-                <li class="page-item" [class.disabled]="isDisabledNext">
+                <li class="page-item" *ngIf="chapters.length" [class.disabled]="isDisabledNext">
                     <a class="page-link" (click)="next()" id="next">next</a>
                 </li>
-
-
             </ul>
-
             <div class="col-2">
-
-                <button type="button" *ngIf="userCurrAuth()" class="btn rounded" id="btnC" (click)="createChapter()">CREATE</button>
+                <button type="button" *ngIf="userCurrAuth()" class="btn rounded" id="btnC" 
+                (click)="createChapter()">Create</button>
             </div>
         </div>
-
-        <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <br>
+        <button type="button" class="btn rounded" id="btnC" (click)="edit =! edit">Edit Blog</button>
     </div>
 </div>
+<br>
+<div *ngIf="edit" class="card text-white col shadow-lg rounded" id="FirstBlogs">
+    <div class="card-body">
+        <h4 class="card-title ">Edit:</h4>
+        
+    <form>
+        <div class="form-group row col-12">
+                <input type="text" class="form-control" name="editName"  [(ngModel)]="story.name">
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-5 text-left">
+                <div *ngFor="let tag of options | slice:0:length+1">
+                    <input type="checkbox" class="form-check-input" name="tag" value={{tag.tag}} 
+                    [checked]="tag.checked" (change)="tag.checked = !tag.checked">
+                    <label>{{tag.tag.name}}</label>
+                </div> 
+            </div>
+            <div class="col-5 text-left">
+                <div *ngFor="let tag of options | slice:length+1:(length*2)+1">
+                    <input type="checkbox" class="form-check-input" name="tag" value={{tag.tag}} 
+                    [checked]="tag.checked" (change)="tag.checked = !tag.checked">
+                    <label>{{tag.tag.name}}</label>
+                </div> 
+            </div>
+        </div>
+    </form>
+    <br>
+    <button type="button" class="btn rounded" id="btnC" (click)="editBlog()">Save</button>
+    </div>
+</div>
+<br>

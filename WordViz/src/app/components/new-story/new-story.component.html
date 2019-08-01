@@ -1,11 +1,10 @@
 <br>
 <div class="card mb-3 rounded" id="textH">
-    <div class=" card-header text-center">
-        <div class="form-group row">
-                <input type="text" class="form-control" placeholder="Enter a Title" [(ngModel)]="storyTitle">
-        </div>
+        <h1 class="card-header text-center">
+            <input type="text" class="text-center form-control" placeholder="Enter a title" [(ngModel)]="storyTitle">
+        </h1>
                 <form>
-                    <div class="row">
+                    <div class="row text-center">
                         <div class="col-2"></div>
                         <div class="col-5 text-left">
                             <div *ngFor="let tag of options | slice:0:length+1">
@@ -21,8 +20,7 @@
                         </div>
                     </div>
                 </form>
-        </div>
     <div class="card-body rounded" id="body">
-            <button type="button" (click)=createStory() class="btn btn-primary">CREATE</button>
+            <button type="button" (click)=createStory() class="btn rounded" id="btnC">Create</button>
     </div>
 </div>

@@ -1,9 +1,9 @@
+<br>
 <div class="card mb-3 rounded" id="textH">
     <div class=" card-header text-center">
-        <label><b>Enter a title:&nbsp;&nbsp;</b></label>
-        <input type="text" [(ngModel)]="chapterTitle">
+        <h1><input type="text" class="text-center" placeholder="Enter a title" [(ngModel)]="chapterTitle"></h1>
     </div>
     <div class="card-body rounded" id="body">
     </div>
-    <button type="button" (click)=createChapter()>CREATE</button>
+    <button type="button" id="btnC"  class="btn rounded" (click)=createChapter()>CREATE</button>
 </div>

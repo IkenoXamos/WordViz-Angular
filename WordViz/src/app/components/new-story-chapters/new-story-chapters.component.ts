@@ -34,8 +34,11 @@ export class NewStoryChaptersComponent implements OnInit {
 
 
   constructor(private auth: AuthService,private storyService: StoryService,
-    private router:Router, private stateService: StateService, private tagService: TagService) {
+    private router:Router, private stateService: StateService, private tagService: TagService,
+    private ss:StateService) {
 
+    this.story = this.ss.data;
+    this.ss.data = undefined;
     this.userCurrAuth();
     this.storyService.getStoryChapters(this.story).subscribe(
       data =>{
@@ -81,24 +84,23 @@ export class NewStoryChaptersComponent implements OnInit {
   ngOnInit() {}
 
   userCurrAuth(){
-    if(this.auth.currentUser.userId == this.storyService.currStory.author.userId){
-      this.story = this.storyService.currStory;
-      return true;
 
-      //////////////con here
-    } else{
-      return false;
+    if(this.auth.currentUser.userId != this.story.author.userId){
+      this.router.navigate(['home'])
+    }else{
+      return true;
     }
   }
 
   createChapter(){
+    this.stateService.data = this.story;
     this.router.navigate(['/newChapterTitle']);
-    this.stateService.data = this.storyService.currStory;
+
   }
 
   editChapter(index: number){
-    this.router.navigate(['/editChapter']);
     this.stateService.data = this.chapters[index];
+    this.router.navigate(['/editChapter']);
   }
 
   editStory(){
