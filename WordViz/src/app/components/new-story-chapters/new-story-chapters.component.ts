@@ -15,6 +15,11 @@ import { TagService } from 'src/app/services/tag.service';
 })
 export class NewStoryChaptersComponent implements OnInit {
 
+  low:number = 0;
+  high:number = 10;
+  isDisabledPrev2:boolean = true; 
+  isDisabledNext2:boolean = false;
+
   story:Story;
   story2:Story;
   chapters:Chapter[];
@@ -39,7 +44,9 @@ export class NewStoryChaptersComponent implements OnInit {
       data =>{
         if(data!=null){
           this.chapters = data;
-          
+          if(this.chapters.length <= this.high){
+            this.isDisabledNext2 = true;
+          }
   
         }
         else{
@@ -120,4 +127,36 @@ export class NewStoryChaptersComponent implements OnInit {
     }
     console.log(this.tags2)
   }
+
+  previous2(){
+    if(this.low <= 0){
+      this.isDisabledPrev2 = true;
+    }
+    else{
+      this.low = this.low - 10;
+      this.high = this.high - 10;
+      this.isDisabledPrev2 = false;
+      this.isDisabledNext2 = false;
+      if(this.low <= 0){
+        this.low = 0;
+        this.high = 10;
+        this.isDisabledPrev2 = true;
+        this.isDisabledNext2 = false;
+      }
+    }
+  }
+
+  next2(){
+    
+      this.low = this.low + 10;
+      this.high = this.high + 10;
+      this.isDisabledNext2 = false;
+      this.isDisabledPrev2 = false;
+      if(this.high + 10 >= this.chapters.length){
+        this.isDisabledNext2 = true;
+        this.isDisabledPrev2 = false;
+      }
+    
+  }
+
 }

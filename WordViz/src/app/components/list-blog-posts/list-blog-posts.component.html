@@ -6,7 +6,7 @@
 
         <div class="list-group">
 
-            <div class="row" *ngFor="let chapter of chapters | slice:0:9; let i = index">
+            <div class="row" *ngFor="let chapter of chapters | slice:low:high; let i = index">
                 <a class="list-group-item list-group-item-action text-dark col-10"><u>{{chapter.name}}</u></a>
                 <button type="button" *ngIf="userCurrAuth()" class="col-2 btn rounded" id="btnE" (click)=editChapter(i)>Edit</button>
             </div>
@@ -17,18 +17,14 @@
         <div class="row">
             <div class="col-md-2"></div>
             <ul class="pagination pagination-sm col-6">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">&laquo;</a>
+                <li class="page-item" [class.disabled]="isDisabledPrev">
+                    <a class="page-link" (click)="previous()" id="prev">prev</a>
                 </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
+
+                <li class="page-item" [class.disabled]="isDisabledNext">
+                    <a class="page-link" (click)="next()" id="next">next</a>
                 </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2 loop goes here</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
-                </li>
+
 
             </ul>
 
