@@ -32,9 +32,9 @@ export class SearchPipe implements PipeTransform {
               this.tags = c[key].tags;
 
               if (c[key].type==1){
-                val4 = 'blog';
-              }else{
                 val4 = 'story';
+              }else{
+                val4 = 'blog';
               }
 
             }
