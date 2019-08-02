@@ -24,8 +24,6 @@ export class SearchPipe implements PipeTransform {
             let val3: string = '';
             let val4: string = '';
 
-
-            
             if(key == 'story' ) {
               val = c[key].author.displayName;
               val2 = c[key].name;
@@ -36,7 +34,6 @@ export class SearchPipe implements PipeTransform {
               }else{
                 val4 = 'blog';
               }
-
             }
             if(key == 'name'){
                 val3= c[key];     
@@ -51,7 +48,6 @@ export class SearchPipe implements PipeTransform {
                   break;
                 }
               }
-              
               //searh by author name
               if(val.toLowerCase().includes(arg.toLowerCase())) {
                   include = true;
