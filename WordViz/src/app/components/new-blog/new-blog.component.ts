@@ -47,7 +47,7 @@ export class NewBlogComponent implements OnInit {
       data =>{
         if(data!=null){
           this.ss.data=data;
-          this.router.navigate(['viewStoryChapters'])
+          this.router.navigate(['viewBlogPosts']);
         }
         else{
           console.log("error creating new story")

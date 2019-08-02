@@ -34,7 +34,10 @@ export class NewChapterTitleComponent implements OnInit {
       data => {
         if(data!=null){
           this.stateService.data = data;
+          
           this.router.navigateByUrl('/editChapter');
+          
+          
         }
       }
     );
